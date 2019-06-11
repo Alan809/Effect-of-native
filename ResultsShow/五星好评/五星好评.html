@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>五星好评</title>
+	<style>
+	#pid>img{width: 15px;height: 15px;}
+	</style>
+</head>
+<body>
+	<div id="pid">
+		<img src="img/1.gif" alt="">
+		<img src="img/1.gif" alt="">
+		<img src="img/1.gif" alt="">
+		<img src="img/1.gif" alt="">
+		<img src="img/1.gif" alt="">
+	</div>
+	<script>
+		var img = document.getElementsByTagName("img");
+		var count = 0;
+		//方法一：for(var i=0;i<img.length;i++){
+		// 	var sum = 0;
+		// 	img[i].index = i;
+		// 	img[i].onclick=function(){
+		// 		sum = this.index;
+		// 		fn(sum);
+		// 	}
+		// }
+		//方法二：let (转让) ES6
+		for(let i=0;i<img.length;i++){
+			img[i].onclick=function(){
+				//console.log(i);
+				fn(i);
+			}
+		}
+		function fn(sum){
+			for(var i=0;i<=sum;i++){
+				if(count <= sum){
+					img[i].src="img/2.gif";
+					count = sum;
+				}else{
+					for(var j=sum+1;j<img.length;j++){
+						img[j].src="img/1.gif";
+						count = 0;
+					}
+				}
+				
+			}
+				
+		}
+	</script>
+</body>
+</html>

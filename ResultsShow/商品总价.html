@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="zh-cn">
+<head>
+	<meta charset="UTF-8">
+	<title>商品</title>
+</head>
+<body>
+	<div id="box">
+		AD运动衣<span id="s1">350</span>元  <input type="checkbox" name="" id="i1" checked><br>
+		NICK运动背包<span id="s2">220</span>元  <input type="checkbox" name="" id="i2"><br>
+		乔丹运动鞋<span id="s3">480</span>元  <input type="checkbox" name="" id="i3"><br>
+		花费总计：<input type="text" name="" id="txt">
+	</div>
+	<script>
+
+		var ipts = document.getElementsByTagName("input") 	// 获取所有的input标签
+		,	spans = document.getElementsByTagName("span"); 	// 获取所有的span标签
+		var sum = 0;										// 声明一个总计变量，并赋值为0
+		var lg = ipts.length - 1;							// 把复选框个数赋值给变量lg
+		for(var i=0;i<lg;i++){								// 遍历复选框节点
+
+			if(ipts[i].checked){							// 计算默认选中的总价
+				sum += Number(spans[i].innerHTML);			// 把被选中的复选框总价加起来
+			}
+			// alert(ipts[i].type);
+			ipts[i].index = i;								
+			ipts[i].onclick = function(){
+				// alert(i);
+				var total = Number(txt.value);
+				if(this.checked){
+					ipts[lg].value = total + Number(spans[this.index].innerHTML);
+				}else{
+					ipts[lg].value = total - Number(spans[this.index].innerHTML);
+				}
+			}
+		}
+		ipts[lg].value = sum;								// 把总价输出到最后一个input标签里，也就是唯一的一个文本框
+	</script>
+</body>
+</html>

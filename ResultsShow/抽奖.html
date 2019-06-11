@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		#ipt{
+			margin: 0px;
+			padding: 0px;
+			width: 180px;
+			height: 30px;
+			line-height: 30px;
+			text-align: center;
+			border-radius: 6px;
+			background: #FF9A00;
+			font-size: 20px;
+		}
+		#btn{
+			width: 180px;
+			height: 30px;
+			line-height: 30px;
+			text-align: center;
+			border-radius: 6px;
+			background: #FF9A00;
+			font-size: 20px;
+		}
+		
+	</style>
+</head>
+<body>
+	<p id="ipt"></p><br>
+	<p id="btn">开始</p> 您还有<span id="spn" style="color:red;">3</span>次机会
+	<script>
+		var btn = document.getElementById("btn"),
+			spn = document.getElementById("spn"),
+			ipt = document.getElementById("ipt");
+		var arr = ["宝马320i","奔驰s600","苹果7P","华为P9","小米MAX","电动车","自行车","海南7日游"];
+		var timer = null,
+			count = 3;//3次抽奖机会
+		btn.onclick = function(){
+			if(!timer){ //解决定时器BUG
+				count--; //抽奖次数减一
+				if(count<0){        //判断抽奖次数进行控制抽奖
+					alert("您已没有抽奖资格");
+					btn.innerHTML = "抽奖次数用光";
+				}else{        //可以进行抽奖
+					btn.innerHTML = "抽奖中";
+					spn.innerHTML = count;   //抽奖次数写入span
+					timer = setInterval(function(){     //设置定时器随机生成奖品
+						var num = Math.floor(Math.random()*arr.length);
+						ipt.innerHTML = arr[num];
+					},50)
+					setTimeout(function(){            //3秒后停止抽奖
+						clearInterval(timer);
+						btn.innerHTML = "开始";
+						timer = null;
+						arr.splice(arr.indexOf(ipt.innerHTML),1);  //删除数组中抽到的奖品
+					},3000)
+				}
+			}
+		}
+		
+	</script>
+</body>
+</html>

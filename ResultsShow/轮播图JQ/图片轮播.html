@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>图片轮播</title>
+	<style>
+	*{margin: 0px;padding: 0px;}
+	#box{width: 1000px; height: 409px;margin: 50px auto;position: relative;}
+	#box #images img{float: left;display: none;position: absolute;}
+	#box #images img:nth-child(1){display: block;}
+	.btn{position: absolute;top:183px;cursor: pointer;z-index: 999;display: none;}
+	#left{left: 4%;}
+	#right{right: 4%;}
+	#left img:hover,#right img:hover{background: #999;border: 1px solid #ccc;opacity: 0.7;}
+	#text{position: absolute;right: 30%;bottom:5%;}
+	ul{list-style: none;}
+	li{width: 45px;height: 45px;border-radius: 100%;text-align: center;line-height: 45px;float: left;background: #fff;opacity: 0.7;color: #000;font-weight: bolder;margin-right: 5px;cursor: pointer;font-size: 20px;}
+	.active{background: blue;color: #fff;}
+	</style>
+	<script src="jquery-3.1.1.js"></script>
+	<script src="轮播图.js"></script>
+</head>
+<body>
+	<div id="box">
+		<div id="left" class="btn">
+			<img src="img/l.png" alt="">
+		</div>
+		<div id="images">
+			<img src="img/1.jpg" alt="">
+			<img src="img/2.jpg" alt="">
+			<img src="img/3.jpg" alt="">
+			<img src="img/4.jpg" alt="">
+			<img src="img/5.jpg" alt="">
+			<img src="img/6.jpg" alt="">
+		</div>
+		<div id="right" class="btn">
+			<img src="img/r.png" alt="">
+		</div>
+		<div id="text">
+			<ul>
+				<li class="active">1</li>
+				<li>2</li>
+				<li>3</li>
+				<li>4</li>
+				<li>5</li>
+				<li>6</li>
+			</ul>
+		</div>
+	</div>
+
+</body>
+</html>

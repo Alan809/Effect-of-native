@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+
+</head>
+<body>
+	<input type="button" value="-" id="reduce">
+	<input type="text" id="num" value="1">
+	<input type="button" value="+" id="plus">&nbsp;&nbsp;
+	单价：<span id="up" style-color="red">10</span>元/件&nbsp;
+	总价：<span id="vl2">10</span>元
+	<script>
+		var reduce = document.getElementById("reduce")
+		,num = document.getElementById("num")
+		,plus = document.getElementById("plus")
+		,up= document.getElementById("up")
+		,vl2 = document.getElementById("vl2");
+		var price = up.innerText;
+		var tvl = num.value;
+		reduce.onclick=function(){
+			tvl--;
+			if(tvl<=0){
+				tvl = 0;
+			}
+			num.innerText=tvl;
+			vl2.innerText=tvl*price;
+		}
+		plus.onclick=function(){
+			tvl++;
+			if(tvl>10){
+				tvl = 10;
+				alert('每个ID限购10件！');
+			}
+			num.innerText=tvl;
+			vl2.innerText=tvl*price;
+		}
+
+	</script>
+</body>
+</html>

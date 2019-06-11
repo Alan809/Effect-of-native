@@ -1,0 +1,28 @@
+	*{margin:0;padding: 0}
+	.box{width: 300px;height:100%;border-right: 5px solid #7a6e6e;
+		  position: absolute;bottom:0;right: 0 }
+	.box  ul{position: absolute;right: 0px;bottom: 0;}
+	.box  ul li {list-style: none;width:35px;height: 35px;background:#7a6e6e;
+		         margin-top: 2px;position: relative;  }
+	.box  ul li  b{width:50px;font-size: 7px;font-weight: normal;color: #fff;
+		       position: absolute;left: 5px;top: 10px;display: none;margin-left:0px;}
+	.box  ul li a{float:right;width:35px;height: 35px;position: relative;}
+	.box  ul li a span{position: absolute;width: 5px;height: 5px;background: red;
+		         border-radius: 50%;left: 25px;top: 7px;}
+	.img_1{background: url(../img/toolbars.png)no-repeat -100px -165px;}
+	.img_2{background: url(../img/toolbars.png)no-repeat -62px 8px;}
+	.img_3{background: url(../img/toolbars.png)no-repeat -201px -91px;}
+	.img_4{background: url(../img/toolbars.png)no-repeat -61px -41px;}
+	.img_5{background: url(../img/toolbars.png)no-repeat -62px -90px;}
+	.img_6{background: url(../img/toolbars.png)no-repeat -62px -140px;}
+	.img_7{background: url(../img/toolbars.png)no-repeat -60px -242px;}
+	.img_8{background: url(../img/toolbars.png)no-repeat -62px -294px;}
+	.box ul li .write{background: #fff}
+	.box ul li:nth-child(4):hover {
+		width: 80px;
+		margin-left:-45px;
+		background: #c81622;
+	}
+	.box ul li:nth-child(4):hover b{
+		display: block;
+	}	

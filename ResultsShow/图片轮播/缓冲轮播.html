@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+	*{margin: 0;padding: 0;}
+  	#box{width: 500px;height: 200px;top: 100px;margin: 0 auto;border: 2px solid pink;overflow: hidden;position: relative;}
+  	img{width: 100%;height: 100%;}
+  	ul li{width: 500px;height: 200px;list-style: none;float: left;}
+  	ul{position: absolute;width:2500px;}
+	</style>
+</head>
+<body>
+	<div id="box">
+		<ul id="ul">
+			<li><img src="img/1.jpg" alt=""></li>
+			<li><img src="img/2.jpg" alt=""></li>
+			<li><img src="img/3.jpg" alt=""></li>
+			<li><img src="img/4.jpg" alt=""></li>
+			<li><img src="img/5.jpg" alt=""></li>
+			<li><img src="img/6.jpg" alt=""></li>
+		</ul>
+	</div>
+	<script>
+		var timer=null;
+		var li=document.getElementsByTagName('li');
+		function lunbo(){
+			clearInterval(timer);
+			timer=setInterval(function(){
+				if(ul.offsetLeft<=-li[0].offsetWidth){
+					clearInterval(timer);
+					ul.style.marginLeft=0;
+					ul.appendChild(li[0]);
+				}else{
+					var speed=(500+ul.offsetLeft)/9;
+					speed=speed>0?Math.ceil(speed):Math.floor(speed);
+					ul.style.marginLeft=ul.offsetLeft-speed+"px";      		
+				}		     	 		
+			},30)		         		
+		}
+		setInterval(lunbo,2000);
+	</script>
+</body>
+</html>

@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>曹操去哪儿</title>
+	<style>
+	#box{float:none; height: 524px;width: 280px;background: #D0D0D0;margin:0px auto;padding:0px; }
+	#box1{ height: 30px;width: 280px;background: #F8F8F8;}
+	#box1>img:nth-child(1){float: left; width: 20px;margin-top:6px;margin-left:4px; }
+	#box1>img{float: right; width: 20px;margin-top:6px;margin-right:6px; }
+	#box1>p{text-align: center;font-size: 14px;padding-top:8px;}
+	#box2{height: 30px;width: 280px;background: #F8F8F8;margin-top: 2px;text-align: center;}
+	#box2>input{margin-top:2px; width: 120px;height: 25px;background:#F8F8F8;border: none;}
+	#box2>input:nth-child(2){border-bottom:3px solid #ff8c00;}
+	#box3{height:146px;width:268px;background: #F8F8F8;margin-left: 6px;margin-top: 10px; font-size: 10px;margin-top: 6px;}
+	#box3>h4{padding-top: 4px;margin-top: 8px;margin-bottom: 4px;}
+	#box3>h4,p{margin-left: 4px;}
+	#spn{margin-left: 16px;}
+	#spn>span>img{float: left; width: 20px;height: 20px; margin-left: 20px;}
+	#btn_1{text-align: center; }
+	#btn_1>input{width: 126px;height: 24px;border:none; }
+	#box4{height:260px;width:268px;background: #F8F8F8;margin-left: 6px;font-size: 10px;  }
+	#box4>h4{margin-left: 2px;margin-top: 4px;padding:4px;margin-bottom: 2px;}
+	#btn_2{text-align: center;}
+	#btn_2>input{width: 126px;height: 24px;border: none;}
+	#box5{height: 30px;width:220px;background: #F8F8F8;margin-left:6px;margin-top:6px;float: left;}
+	#box5>input{height: 26px;width:216px;}
+	#btn_3{margin-left:4px;margin-top:7px;padding-top: 5px;padding-bottom: 6px; }
+	</style>
+</head>
+<body>
+	<div id="box">
+		<div id="box1">
+			<img src="img/l.png">	
+			<img src="img/k.jpg">
+			<p>曹操去哪儿</p>	
+		</div>
+		<div id="box2">
+			<input type="button" value="游戏详情">
+			<input type="button" value="玩家评论">
+		</div>				
+		<div id="box3">
+			<h4>评分</h4>
+			<p>我的评分：力荐</p>
+			<vid id="spn">
+				<span><img src="img/1.gif" alt=""></span>
+				<span><img src="img/1.gif" alt=""></span>
+				<span><img src="img/1.gif" alt=""></span>
+				<span><img src="img/1.gif" alt=""></span>
+				<span><img src="img/1.gif" alt=""></span>
+				<button id="btn">评分</button>
+			</vid>
+			<p>我的机型：I9500</p>
+			<div id="btn_1">
+				<input type="button" value="可以玩">
+				<input type="button" value="不可玩">
+			</div>	
+		</div>
+		<div id="box4">
+			<h4>评论</h4>
+			<div id="btn_2">
+				<input type="button" value="时间排序">
+				<input type="button" value="人气排序">
+			</div>
+			<p>评论内容：</p>
+			<div id="plnr">	
+				<p></p>
+				<p></p>
+				<p></p>
+			</div>
+		</div>
+		<div id="box5">
+		<input type="text">	
+		</div>
+		<button id="btn_3">发表</button>
+	</div>
+	<script>
+		var img = document.getElementById("spn").getElementsByTagName("img");
+		var num = 0;
+		for(var i=0;i<img.length;i++){
+			var sum = 0;
+			img[i].index = i;
+			img[i].onclick=function(){
+				sum = this.index;
+				fn(sum);
+			}
+		}
+		function fn(sum){
+			for(var i=0;i<=sum;i++){
+				if(num <= sum){
+					img[i].src="img/2.gif";
+					num = sum;
+				}else{
+					for(var j=sum+1;j<img.length;j++){
+						img[j].src="img/1.gif";
+						num = 0;
+					}
+				}
+				
+			}
+		}
+	</script>
+</body>
+</html>

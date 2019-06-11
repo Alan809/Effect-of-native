@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>显示本地时间</title>
+</head>
+<body onload="init()">
+	<h1>本地时间</h1>
+	<div id="divid"></div>
+	<script>
+		function init(){
+			time();   //打开网页立即显示时间
+			window.setInterval('time()',1000); //每1秒执行一次time();
+		}
+		function time(){
+			var div = document.getElementById("divid");
+			var dt = new Date();   //获取系统时间
+			var dl = dt.toLocaleString();   //获取本地当前时间
+			div.innerHTML = dl;
+		}
+	</script>
+</body>
+</html>

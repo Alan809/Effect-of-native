@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		ul,li{margin:0;padding:0;list-style: none}
+		#box{width:600px; height:400px;margin:20px auto;position: relative;}
+		ul li{float: left;width:200px;height:200px;}
+		img{width:100%;height:100%;}
+		.mark{width:600px;height:400px; background:#000;opacity: 0.5;}
+		.pic{width:300px;height:300px; position: absolute;left:150px;top:50px;}
+		span{position: absolute;width:20px;height:20px;left:450px;top:50px; background: #fff;text-align: center;}
+	</style>
+</head>
+<body>
+<div id='box'>
+	<ul>
+		<li><img src="img/1.jpg" alt=""></li>
+		<li><img src="img/2.jpg" alt=""></li>
+		<li><img src="img/3.jpg" alt=""></li>
+		<li><img src="img/4.jpg" alt=""></li>
+		<li><img src="img/5.jpg" alt=""></li>
+		<li><img src="img/6.jpg" alt=""></li>
+	</ul>
+	<!-- <div class='mark'></div>
+	<img src="img/2.jpg"  class='pic'>
+	<span>X</span> -->
+</div>
+<script>
+	var lis=document.getElementsByTagName('li');
+	var box=document.getElementById('box');
+		//遍历所有的li,单击的是哪个li里的图片src 。
+		//	创建div  className='mark' 追加到box
+		//	创建img  src          className  追加到box
+		//	创建span  innerHTML=X  追加到box
+		for(var i=0;i<lis.length;i++){
+
+			     lis[i].onclick=function(){
+			     	//console.log(this)
+			     	var  newDiv=document.createElement('div');
+			     		 newDiv.className='mark';
+			     		 box.appendChild(newDiv);
+			     	var  newImg=document.createElement('img');
+			     		 newImg.className='pic';
+			     		 newImg.src=this.getElementsByTagName('img')[0].src;
+			     		// newImg.src=this.childNodes[0].src;
+			     		 box.appendChild(newImg);
+			     	var newSpan=document.createElement("span");
+			     		newSpan.innerHTML='X';
+			     		box.appendChild(newSpan);
+
+			     		newSpan.onclick=function(){
+			     			box.removeChild(newDiv);
+			     			box.removeChild(newSpan);
+			     			box.removeChild(newImg);
+			     		}
+
+			     }
+
+		}
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="zh-cn">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+	*{margin: 0;padding: 0;}
+	ul{list-style: none;display: none;}
+	ul li{width: 100%;height: 50px;background: #ccc;margin: 5px auto;line-height: 50px;text-indent: 10px;}
+	#box{width: 200px;height: 600px;border: 1px solid #ccc;margin: auto;}
+	h1{text-align: center;width: 198px;height: 88px;border: 1px solid #ccc;margin: 5px auto;line-height: 88px;background: #ccc;cursor: pointer;}
+	</style>
+</head>
+<body>
+	<div id="box">
+		<h1>我的大学</h1>
+		<ul>
+			<li>清华大学</li>
+			<li>北京大学</li>
+			<li>中国海洋大学</li>
+			<li>河南理工大学</li>
+		</ul>
+		<h1>我的爱好</h1>
+		<ul>
+			<li>跑步</li>
+			<li>篮球</li>
+			<li>冲浪</li>
+			<li>唱歌学习</li>
+		</ul>
+		<h1>我的家乡</h1>
+		<ul>
+			<li>河南</li>
+			<li>驻马店</li>
+			<li>平舆</li>
+			<li>步行街</li>
+		</ul>
+		<h1>我的梦想</h1>
+		<ul>
+			<li>高新</li>
+			<li>高能</li>
+			<li>高颜</li>
+			<li>高效</li>
+		</ul>
+	</div>
+	<script>
+		var box = document.getElementById('box');
+		var ul = box. getElementsByTagName('ul');
+		var h1 = box.getElementsByTagName('h1');
+		// ul[0].style.display = 'block';
+		var lg = h1.length;
+		for(var i=0;i<lg;i++){
+			h1[i].index = i;
+			h1[i].onclick = function(){
+				for(var j=0;j<lg;j++){
+					ul[j].style.display = 'none';
+				}
+				ul[this.index].style.display = 'block';				
+			}
+		}
+	</script>
+</body>
+</html>

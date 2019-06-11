@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>曹操去哪儿</title>
+	<style>
+	#box{ height: 524px;width: 280px;background: #D0D0D0;margin:0 auto;padding:0;   }
+	#box1{ height: 30px;width: 280px;background: #F8F8F8;}
+	#box1>img:nth-child(1){float: left; width: 20px;margin-top:6px;margin-left:4px; }
+	#box1>img{float: right; width: 20px;margin-top:6px;margin-right:6px; }
+	#box1>p{text-align: center;font-size: 14px;padding-top:8px;}
+	#box2{height: 30px;width: 280px;background: #F8F8F8;margin-top: 2px;text-align: center;}
+	#box2>input{margin-top:2px; width: 120px;height: 25px;background:#F8F8F8;border: none;}
+	#box2>input:nth-child(2){border-bottom:3px solid #ff8c00;}
+	#box3{height:146px;width:268px;background: #F8F8F8;margin-left: 6px;margin-top: 10px; font-size: 10px;margin-top: 6px;}
+	#box3 h4{padding-top: 4px;margin-top: 8px;margin-bottom: 4px;}
+	#box3 h4,p{margin-left: 4px;}
+	#spn{margin-left: 16px;}
+	#spn>span>img{float: left; width: 20px;height: 20px; margin-left: 20px;}
+	#btn_1{text-align: center; }
+	#btn_1>input{width: 126px;height: 24px;border:none; }
+	#box4{height:260px;width:268px;background: #F8F8F8;margin-left: 6px;font-size: 10px;  }
+	#box4>h4{margin-left: 2px;margin-top: 4px;padding:4px;margin-bottom: 2px;}
+	#btn_2{text-align: center;}
+	#btn_2>input{width: 126px;height: 24px;border: none;}
+	#ipt{margin-left: 6px;margin-top: 6px; height: 26px;width:200px;position: absolute;}
+	#btn_3{margin-top: 5px; padding-top: 4px;padding-bottom: 4px;margin-right: 6px; float: right;}
+	#plnr{overflow: scroll;margin: 4px;height: 65%;}
+	#plnr2{display: none;}
+	</style>
+</head>
+<body>
+	<div id="box">
+		<div id="box1">
+			<img src="img/l.png">	
+			<img src="img/k.jpg">
+			<p>曹操去哪儿</p>	
+		</div>
+		<div id="box2">
+			<input type="button" value="游戏详情">
+			<input type="button" value="玩家评论">
+		</div>				
+		<div id="box3">
+			<h4>评分</h4>
+			<p>我的评分：力荐</p>
+
+			<!-- 五分好评 -->
+			<vid id="spn">
+				<span><img src="img/1.gif" alt=""></span>
+				<span><img src="img/1.gif" alt=""></span>
+				<span><img src="img/1.gif" alt=""></span>
+				<span><img src="img/1.gif" alt=""></span>
+				<span><img src="img/1.gif" alt=""></span>
+				<button id="btn">评分</button>
+			</vid>
+			<p>我的机型：I9500</p>
+			<div id="btn_1">
+				<input type="button" value="可以玩">
+				<input type="button" value="不可玩">
+			</div>	
+		</div>
+
+		<!-- 选项卡 -->
+		<div id="box4">
+			<h4>评论</h4>
+			<div id="btn_2">
+				<input type="button"  value="时间排序" style="color:#ff8c00";>
+				<input type="button"  value="人气排序">
+			</div>
+			<p>评论内容：</p>
+			<div id="plnr">	
+				<div id="plnr1"> 
+					1.<p>通过DOM方法将元素取出来然后给它绑定事件，这是（）：A  DOM1级事件B  HTML事件C  BOM事件D  DOM0级事件</p>
+					2.<p>常见的倒计时效果中，主要运用的是Date对象中的（）方法：A  setTime()B  toDateString()C  getTime()D  getDay()</p>
+				</div>
+				<div id="plnr2">
+					1.<p>JavaScript中系统弹出框方法是（）：A  forB  consoleC  alertD  do</p>
+					2.<p>JavaScript中系统弹出框方法是（）：A  forB  consoleC  alertD  do</p>
+				</div>
+				
+			</div>
+		</div>
+		<div id="box5">
+		<input type="text" placeholder="3-200个字符" id="ipt">
+		<button id="btn_3">发表</button>
+		</div>
+	</div>
+	<script>
+		var btn = document.getElementById("btn")
+		,	img = document.getElementById("spn").getElementsByTagName("img")
+		,	ipt_play = document.getElementById("btn_1").getElementsByTagName("input")
+		,	ipt_play_1 = document.getElementById("btn_2").getElementsByTagName("input")
+		,	ipt_play_2 = document.getElementById("box2").getElementsByTagName("input")
+		,	p1 = document.getElementById("plnr1").getElementsByTagName("p")
+		,	obj = document.getElementById("plnr1")
+		,	obj2 = document.getElementById("plnr2")
+		,	ipt = document.getElementById("ipt")
+		,	currentIndex = 0
+		,	sun = 0;
+
+		//5星好评
+		for(var i=0;i<img.length;i++){
+			img[i].index=i;
+			img[i].onclick=function(){
+				btn.innerHTML="评分";
+				currentIndex = this.index;
+				fn_pf();
+			}
+		}
+		function fn_pf(){
+			btn.onclick=function(){
+				alert((currentIndex+1) + "分");	
+			}
+			for(var i=0;i<=currentIndex;i++){
+				if(sun <= currentIndex){
+					img[i].src="img/2.gif";
+					sun = currentIndex;
+				}else{
+					for(var j=currentIndex+1;j<img.length;j++){
+						img[j].src="img/1.gif";
+						sun = 0;
+					}	
+				}		
+			}
+		}
+
+		//选项卡
+		function fn_pl(){
+			for(var i=0;i<ipt_play.length;i++){
+				ipt_play[i].index = i;
+				ipt_play[i].onclick=function(){
+					for(var i=0;i<ipt_play.length;i++){
+						ipt_play[i].style= "";
+					}
+					ipt_play[this.index].style.color="#ffffff";
+					ipt_play[this.index].style.background="#ff8c00";
+				}
+			}
+		}(fn_pl());
+
+		//获取输入框内容
+		btn_3.onclick = function (){
+			for(var i=p1.length-1;i>0;i--){
+				p1[i].innerHTML = p1[i-1].innerHTML;
+			}
+			p1[0].innerHTML = ipt.value;
+		}
+	</script>
+</body>
+</html>

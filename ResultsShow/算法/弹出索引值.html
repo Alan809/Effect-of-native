@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>闭包</title>
+</head>
+<body>
+	<ul id = "ulId" style = "height:10px;width:10px;">
+		<li>1</li>
+		<li>2</li>
+		<li>3</li>
+		<li>4</li>
+		<li>5</li>
+	</ul>
+	<script>
+		// var lis = document.getElementById("ulId").getElementsByTagName("li");
+
+		// //方法1
+		// for(var i=0;i<lis.length;i++){
+		// 	lis[i].index = i;
+		// 	lis[i].onmouseover = function(){
+		// 		alert(this.index);
+		// 	}
+		// }
+
+		// //方法2
+		// for(var i=0;i<lis.length;i++){
+		// 	mouseOver(lis[i],i)
+		// }
+		// function mouseOver(lis,index){
+		// 	lis.onmouseover = function (){
+		// 		alert(index);
+		// 	}
+		// }
+
+		// //方法3
+		// for(var i=0;i<lis.length;i++){
+		// 	(function mouseOver(index){
+		// 		lis[i].onmouseover = function (){
+		// 			alert(index);
+		// 		}
+		// 	})(i);
+		// }
+	</script>
+</body>
+</html>

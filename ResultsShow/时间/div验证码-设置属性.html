@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+	#ipt{height: 20px;width: 100px;border: 1px solid #868686;text-align: center;}
+	#btn{height: 20px;width: 100px;border: 1px solid #868686;background: #868686;cursor: pointer;text-align: center;color: #fff; }
+	</style>
+</head>
+<body>
+	<div id="ipt">验证码</div><br/>
+	<div id="btn" startl="0" >发送验证码</div>
+	<script>
+		var btn = document.getElementById("btn")
+		,	ipt = document.getElementById("ipt");
+		ipt.innerHTML = "验证码";
+		btn.onclick=function(){
+			var sum = 5;
+			if(btn.getAttribute("startl") == "0"){
+				btn.setAttribute("startl","1");
+				id = setInterval(function(){
+					btn.innerHTML = sum + "s后重新获取";
+					sum--;
+					if(sum<0){
+						clearInterval(id);
+						ipt.innerHTML = "验证码";
+						btn.innerHTML = "重新发送";
+						btn.setAttribute("startl","0");
+					}
+				},1000);
+				var num = Math.floor(Math.random()*9000+1000);
+				ipt.innerHTML = num;
+			}
+		}	
+		
+	</script>
+</body>
+</html>

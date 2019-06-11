@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title id="tit">Document</title>
+	<style>
+	*{margin: 0px;padding: 0px;}
+	#box{margin: 0 auto};
+	.box1{width: 91px;height: 177px;}
+	.box1{float: right; position: fixed;bottom: 20px;right:20px;opacity: 0.7;cursor: pointer;}
+	.box1:hover{opacity: 1;}
+	</style>
+</head>
+<body>
+	<div id="box">
+		<img src="1.gif" alt="">
+	</div>
+	<div id="box1" class="box1">
+		<img src="2.png" alt="">
+	</div>
+	<script>
+		var box1 = document.getElementById("box1");
+
+		box1.style.display = "none";// 初始化 隐藏
+
+		document.onscroll = function(){
+			// 如果滚动条位置 > 200  显示小火箭  反之
+			if( document.body.scrollTop  > 200 ){
+				box1.style.display = "block";
+			}else{
+				box1.style.display = "none";
+			}
+		}
+		var timer = null;
+		box1.onclick = function(){
+			// 定时器  返回顶部
+			timer = setInterval(function(){
+				document.body.scrollTop -= 20;
+				if( document.body.scrollTop == 0 ) clearInterval( timer );
+			},10);
+		}
+
+	</script>
+</body>
+</html>

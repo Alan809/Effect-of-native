@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+	*{margin: 0;padding: 0;}
+	#container{width: 1000px;height: 600px;border: 1px solid #ccc;position:relative;}
+	li{list-style: none;}
+	.liBox{position: relative;top:80px;}
+	.liBox li{width: 45px;height: 45px;background:Gray;margin-bottom: 2px;color: #fff;text-align: center;cursor: pointer; }
+	.liBox li:nth-child(1){background: OrangeRed;line-height: 45px;}
+	.liBox li:nth-child(9){background: #999;}
+	</style>
+</head>
+<body>
+	<div id="container">
+		<div class="liBox">
+			<ul>
+				<li><b>导航</b></li>
+				<li>美丽人生</li>
+				<li>潮流酷玩</li>
+				<li>居家生活</li>
+				<li>打造时尚</li>
+				<li>户外出行</li>
+				<li>亲子时光</li>
+				<li>猜你喜欢</li>
+				<li><b>&and;<br>顶部</b></li>
+			</ul>
+		</div>
+		
+		
+	</div>
+	<script>
+		var lis = document.getElementById("container").getElementsByTagName('li');
+		for(let i=0;i<lis.length;i++){
+			lis[i].onmouseover = function(){
+				this.style.width = "47px";
+				this.style.height = "47px";
+			}
+			lis[i].onmouseout = function(){
+				this.style.width = "45px";
+				this.style.height = "45px";
+			}
+		}
+	</script>
+</body>
+</html>

@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		*{
+			margin: 0px;
+			padding: 0px;
+		}
+		#box{
+			height: 600px;
+			width: 600px;
+			border: 2px solid #ccc;
+		}
+		#img{
+			margin: 0px;
+			padding: 0px;
+			height:80px;
+			width:80px;
+			position: absolute;
+			z-index: 999;
+		}
+		.pig{ width: 20px;height: 20px;position: absolute; }
+	</style>
+</head>
+<body>
+	<div id="box">
+		<img src="f1.jpg" alt="" id="img">
+		<!-- <img src="f1.jpg" alt="" class="pig"> -->
+	</div>
+
+	<div id="box1">
+		
+	</div>
+	<script>
+		//1)获取节点
+			var img = document.getElementById("img");
+			var box = document.getElementById("box");
+
+		//2) 绑定键盘按下事件
+			document.body.onkeydown = function(e){
+				var e = e||window.event;// 事件对象兼容
+				// 判断按下去是哪个按键
+				switch( e.keyCode ){
+					case 37:
+						img.style.left = Math.max(img.offsetLeft - 10,0) + "px";
+						break;
+					case 38:
+						img.style.top = Math.max(img.offsetTop - 10,2) + "px";
+						break;
+					case 39:
+						img.style.left = Math.min(img.offsetLeft + 10 , 520) + "px";
+						break;
+					case 40:
+						img.style.top = Math.min(img.offsetTop + 10 ,520)+ "px";
+						break;
+					case 32:
+						var timer = null;
+						var oImg = document.createElement("img");
+						oImg.className = "pig";
+						oImg.src = "f1.jpg";
+						oImg.style.left = img.offsetLeft+30+'px';
+						oImg.style.top = img.offsetTop+30+'px';
+						box.appendChild( oImg );
+						tiemr = setInterval(function(){
+							oImg.style.left = oImg.offsetLeft + 10 + "px";
+							if( oImg.offsetLeft > 1200 ){
+								clearInterval( timer );
+								box.removeChild(oImg);
+							}
+						},30);
+						break;
+				}
+			}
+
+
+	</script>
+</body>
+</html>

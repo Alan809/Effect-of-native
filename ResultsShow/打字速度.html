@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<input type="text" id="ipt">
+	速度<span id="spn"></span>字/秒
+	<script>
+		var ipt = document.getElementById("ipt");
+		var spn = document.getElementById("spn");
+		var timeNow,timeStop;
+		ipt.onfocus = function(){
+			timeNow = +new Date();
+		}
+		ipt.onblur = function(){
+			timeStop = +new Date();
+			var timer = (timeStop - timeNow)/1000;
+			var speed = ipt.value.length/timer;
+			spn.innerHTML = speed.toFixed(2);
+		}
+
+	</script>
+</body>
+</html>

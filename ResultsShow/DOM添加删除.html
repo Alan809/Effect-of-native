@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<table border="1" width="400">
+		<thead>
+			<tr>
+				<td>选择</td>
+				<td>歌曲名称</td>
+			</tr>
+			
+		</thead>
+		<tbody id="tby">
+			<tr>
+				<td><input type="checkbox"></td>
+				<td>月亮之上</td>
+			</tr>
+			<tr>
+				<td><input type="checkbox"></td>
+				<td>大地</td>
+			</tr>
+			<tr>
+				<td><input type="checkbox"></td>
+				<td>王菲</td>
+			</tr>
+			<tr>
+				<td><input type="checkbox"></td>
+				<td>明天</td>
+			</tr>
+		</tbody>
+		<tfoot id="tFt">
+			<tr>
+				<td><input type="checkbox">全选</td>
+				<td><input type="button" value="删除"></td>
+			</tr>
+			<tr>
+				<td><input type="button" value="添加" id="addTr"></td>
+				<td><input type="text" id="tet"></td>
+			</tr>
+		</tfoot>
+	</table>
+	<script>
+		var tFt = document.getElementById("tFt");
+		var tby = document.getElementById("tby");
+		var tet = document.getElementById("tet");
+		var trs = document.getElementById("tr");
+		var ipts = tby.getElementsByTagName("input");
+		var tFipts = tFt.getElementsByTagName("input");
+		
+		//添加
+		tFipts[2].onclick = function(){
+			var newTr = document.createElement("tr");
+			var newTd = document.createElement("td");
+			var newTd1 = document.createElement("td");
+			newTd.innerHTML = "<input type='checkbox'>";
+			newTd1.innerHTML = tet.value;
+			newTr.appendChild(newTd);
+			newTr.appendChild(newTd1);
+			tby.appendChild(newTr);
+			//单选
+			for(let i=ipts.length-1;i>=0;i--){
+				ipts[i].onclick = function(){
+					bgCheng(i)
+				}	
+			}
+		}
+
+		//单选
+			for(let i=ipts.length-1;i>=0;i--){
+				ipts[i].onclick = function(){
+					bgCheng(i)
+				}	
+			}
+
+		//全选
+		tFipts[0].onclick = function(){
+			for(var i=ipts.length-1;i>=0;i--){
+				ipts[i].checked = this.checked;
+				bgCheng(i)	
+			}
+		}
+
+		//改变颜色
+		function bgCheng(num){
+			if(ipts[num].checked){
+				ipts[num].parentNode.parentNode.style.background = "red";
+			}else{
+				ipts[num].parentNode.parentNode.style.background = "";
+			}
+		}
+
+		//删除
+		tFipts[1].onclick = function(){
+			for(let i=ipts.length-1;i>=0;i--){
+				if(ipts[i].checked){
+					tby.removeChild(ipts[i].parentNode.parentNode);
+				}
+			}
+		}
+		
+	</script>
+</body>
+</html>

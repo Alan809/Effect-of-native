@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>质数</title>
+</head>
+<body>
+	<script>
+	//什么是质数？
+	//
+		function fn(min,max){
+			var arr = [];
+			for(var i=min;i<=max;i++){
+				var sum = 0;
+				for(var j=1;j<i;j++){
+					if(i%j == 0){
+						sum++;
+					}
+				}
+				if(sum == 1){
+					arr.push(i);
+				}
+			}
+			console.log(arr);
+		}
+		fn(1,100);
+	</script>
+</body>
+</html>

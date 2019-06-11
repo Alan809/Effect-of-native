@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+      div{
+      	  width:1300px;
+      	  height:200px;
+      	  background:black;
+      	  color:white;
+      	  font-size:40px;
+      }
+	</style>
+	<script type="text/javascript">
+		function fun(evt){
+			var obj=evt.target;//获取发生事件的那个对象 <div>
+			var x=evt.clientX; //得到事件的按个X坐标 pageX
+			var y=evt.clientY; //得到事件的按个X坐标 pageY
+			obj.innerHTML="x的坐标"+x+" y的坐标"+y;
+
+		}
+
+	</script>
+</head>
+<body>
+<div onmousemove="fun(event)">
+</div>	
+</body>
+</html>

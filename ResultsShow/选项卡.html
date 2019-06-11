@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="zh-cn">
+<head>
+	<meta charset="UTF-8">
+	<title>选项卡</title>
+	<style>
+	*{margin: 0;padding: 0;}
+	#box{border: 1px solid #ccc; margin: 100px auto;position: relative;width: 406px;}
+	ul{list-style: none;}
+	li{width: 100px; height: 40px; border: 1px solid aqua; float: left; text-align: center; line-height: 40px;border-right: none; background: #fff; cursor: pointer;}
+	li:nth-child(1){background: red; color: #fff;}
+	li:last-child{border-right: 1px solid aqua;}
+	#bottom{width: 100%; height: 300px; background: red; text-align: center; line-height: 300px; color: #fff;}
+	</style>
+</head>
+<body>
+<div id="box">
+	<div id="top">
+		<ul>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+		</ul>
+	</div>
+	<div id="bottom"></div>
+</div>
+	<script>
+		var lis = document.getElementById("top").getElementsByTagName("li");
+		var bottom = document.getElementById("bottom");
+		var school = ["幼儿园","小学","中学","大学"];
+		var colors = ["red","blue","green","pink"];
+		bottom.innerHTML = "幼儿园";
+		// console.log(lis);
+		for(var i=0;i<lis.length;i++){
+			// 把数据渲染到li里
+			lis[i].innerHTML = school[i];
+			// 给每一个li节点绑定下标属性，属性名index
+			lis[i].index = i;
+			// 给每一个li绑定onclick事件
+			lis[i].onclick = function(){
+				// 把所有的li北京颜色设置成白色，然后把字体颜色设置成黑色
+				for(var j=0;j<lis.length;j++){
+					lis[j].style.backgroundColor = "#fff";
+					lis[j].style.color = "#000";
+				}
+				// 改变被点击li节点的背景颜色和字体颜色
+				lis[this.index].style.backgroundColor = colors[this.index];
+				lis[this.index].style.color = "#fff";
+				// 改变下面盒子的背景颜色
+				bottom.style.backgroundColor = colors[this.index];
+				bottom.innerHTML = school[this.index];
+			}
+		}
+		console.log(i);
+//this是指包含它的函数 作为方法被调用时 所属的对象
+	</script>
+</body>
+</html>

@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<img id="img1" src="img/图片1.png" alt="" />		
+	<button id="but" onclick="fn()">开灯</button>
+	<script>
+		var deng = document.getElementById("img1");
+		var but = document.getElementById("but");
+		but.onclick=function(){
+			if(but.innerHTML == "开灯"){
+				but.innerHTML="关灯";
+				deng.src="img/图片2.png";
+			}else{
+				but.innerHTML="开灯";
+				deng.src="img/图片1.png";
+			}
+		}
+	</script>
+</body>
+</html>

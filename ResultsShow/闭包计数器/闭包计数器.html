@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>闭包计数器</title>
+	<style>
+	#box{margin:0px auto;padding:0px; height: 100px;width: 100px;background: #868686; }
+	#demo{margin:0px auto; }
+	</style>
+</head>
+<body>
+    <div id="box">
+    	<p id="demo">0</p>
+		<input type="button" onclick="myFunction()" value="开始">
+	</div>
+	<script>
+		var add = (function (){
+			var counter = 0;
+			return function (){
+				return counter++;
+			}
+		})();
+		console.log(add);
+		function myFunction(){
+			document.getElementById("demo").innerHTML = add();
+		}
+
+	</script>
+</body>
+</html>

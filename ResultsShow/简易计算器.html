@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<form action="" id="formId">
+		<input type="text" placeholder="第一个值">
+		<input type="radio" name="rad">+
+		<input type="radio" name="rad">-
+		<input type="radio" name="rad">*
+		<input type="radio" name="rad">/
+		<input type="radio" name="rad">%
+		<input type="text" placeholder="第二个值">
+		<input type="button" value="计算">
+		<input type="reset">
+		<input type="text" placeholder="计算结果">
+	</form>
+	<script>
+		// 1)获取节点 ==> 找人
+		var ipts = document.getElementById("formId").getElementsByTagName('input');
+		// 2)点击计算按钮 获取 ipts[0]、ipts[6]的值 计算结果 写入ipts[9]
+		// 点击事件  ipts[7] ==> <input type="button" value="计算">
+		ipts[7].onclick = function(){
+			// 获取 两个输入框的值 获取的是字符串 转数值
+			var val1 = +ipts[0].value,// 获取第一个输入框的值
+				val2 = +ipts[6].value;// 获取第二个输入框的值
+			// 判断 点击单选按钮 是什么运算符
+			switch( true ){
+				case ipts[1].checked:
+					ipts[9].value = val1 + val2;
+					break;
+				case ipts[2].checked:
+					ipts[9].value = val1 - val2;
+					break;
+				case ipts[3].checked:
+					ipts[9].value = val1 * val2;
+					break;
+				case ipts[4].checked:
+					ipts[9].value = val1 / val2;
+					break;
+				case ipts[5].checked:
+					ipts[9].value = val1 % val2;
+					break;
+			}
+		}
+	</script>
+</body>
+</html>

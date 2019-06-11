@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<form action="http://www.baidu.com">
+		登陆：<input type="text" id="tet" placeholder="请输入账号">
+		密码：<input type="password" id="psd" placeholder="请输入密码">
+		<button id="btn">登陆</button>
+		<input type="reset" value="重置">
+	</form>
+	<script>
+		var tet = document.getElementById("tet");
+		var psd = document.getElementById("psd");
+		var btn = document.getElementById("btn");
+		btn.onclick=function(){
+			var tetvl = tet.value;
+			var psdvl = psd.value;
+			if(tetvl == "" || psdvl == ""){
+				alert("账号或密码不能为空");
+				return false;
+			}else if(tetvl != "1507D"){
+				alert("账号输入错误");
+				return false;
+			}else if(psdvl != "123456"){
+				alert("密码输入错误");
+				return false;
+			}else{
+				alert("登陆成功");
+				// window.open("http://www.baidu.com");
+			}
+		}
+		
+
+	</script>	
+</body>
+</html>

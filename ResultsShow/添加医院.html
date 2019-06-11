@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<button id="btn">添加医院</button>
+	<script>
+		var btn = document.getElementById("btn");
+		var divs = document.getElementsByTagName('div');
+		btn.onclick = function(){
+			if( divs.length >= 5 ){
+				this.style.display = "none";
+			}else{
+				var oDiv = document.createElement("div"),
+					oInput = document.createElement("input"),
+					oBtn = document.createElement("button");
+				oBtn.innerHTML = "删除";
+				oInput.placeholder = "输入医院名称";
+				oDiv.appendChild( oInput );
+				oDiv.appendChild( oBtn );
+				document.body.appendChild(oDiv);
+				oBtn.onclick = function(){
+					document.body.removeChild( oDiv );
+					btn.style.display = "block";
+				}
+			}
+		}
+
+	</script>
+</body>
+</html>

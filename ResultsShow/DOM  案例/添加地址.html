@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+	.mark{width:100%;height:100%;background: #000;opacity: 0.5;position: absolute;left:0;top:0; display: none;}
+	#info{width:600px;height:300px; background: #fff;position: fixed;left:50%;margin-left:-300px;
+		top:50%;margin-top:-150px; display: none;border-radius: 5px;padding:10px;}
+      h1{font-size: 18px; background: #ccc; height:30px; line-height: 30px}
+     span.bg{background: red;}
+	</style>
+</head>
+<body>
+<button id='add'>添加</button>
+<ul>
+	<li>北京市海淀区上地 <span class="bg">默认地址</span><a href="#">删除</a></li>
+	<li>北京市海淀区上地 <span >设为默认</span><a href="#">删除</a></li>
+	<li>北京市海淀区上地11 <span >设为默认</span><a href="#">删除</a></li>
+	
+	
+	
+</ul>
+<div class='mark' id='mark'></div>
+<div id='info'>
+	<h1>地址</h1>
+	<input type="text">
+	<h1>门牌号</h1>
+	<input type="text">
+	<p></p>
+	<button>保存</button><button>取消</button>
+</div>
+	<script>
+		var add=document.getElementById('add'),
+			mark=document.getElementById('mark'),
+			info=document.getElementById('info'),
+			oBtn=document.getElementsByTagName('button'),
+			input=info.getElementsByTagName('input'),
+			oUls=document.getElementsByTagName('ul'),
+			spans=document.getElementsByTagName('span'),
+			oAs=document.getElementsByTagName('a');
+
+			//单击add添加遮罩层何信息层显示
+			add.onclick=function(){
+				//info  mark显示
+				mark.style.display='block';
+				info.style.display='block';
+				
+			}
+			//单击保存
+			oBtn[1].onclick=function(){
+					if(input[0].value=='' || input[1].value==''){
+							alert('信息输入不完整')
+					}else{
+						var newLi=document.createElement('li');
+							newLi.innerHTML=input[0].value+input[1].value+'<span class="bg">默认地址</span><a href="#">删除</a>';
+							oUls[0].appendChild(newLi);
+							input[0].value='';
+							 input[1].value='';
+							hide();
+							//除了新增加的，其余都是设置为默认，样式无
+							for(var i=0;i<spans.length-1;i++){
+								spans[i].innerHTML='设为默认';
+								spans[i].className='';
+							}
+
+							defaultAddress();
+							deleteLi();
+					}
+				}
+			//单击取消
+				oBtn[2].onclick=function(){
+					 hide();
+				}
+
+
+function  hide(){
+	mark.style.display='none';
+	info.style.display='none';
+}
+		
+//设为默认地址
+function  defaultAddress(){
+	for(var i=0;i<spans.length;i++){
+	spans[i].onclick=function(){
+		 for(var j=0;j<spans.length;j++){
+		 		spans[j].className='';
+		 		spans[j].innerHTML='设为默认';
+		 }
+		 this.className='bg';
+		 this.innerHTML='默认地址';
+	}
+
+	}
+
+}
+
+defaultAddress();
+
+
+//删除
+function  deleteLi(){
+	for(var i=0;i<oAs.length;i++){
+		oAs[i].onclick=function(){
+			oUls[0].removeChild(this.parentNode);
+		}
+	}
+
+}
+
+deleteLi();
+
+	</script>
+</body>
+</html>

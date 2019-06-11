@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>JavaScript实现简单省市(NBA版)联动</title>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <script type="text/javascript" >
+        var arr=new Array(3);
+        arr[0]=["骑士","詹姆斯","欧文","乐福","TT"];
+        arr[1]=["勇士","库里","杜兰特","汤普森","格林"];
+        arr[2]=["马刺","邓肯","吉诺比利","帕克","卡哇伊","阿尔德里奇"];
+        function choose(value)
+        {
+            var s=document.getElementById("s1");
+            var a=s.getElementsByTagName("option");
+            for(var k=0;k<a.length;k++)//在选择一个新球队时，应该删除之前球队的球员
+            {
+                s.removeChild(a[k]);
+                k--;     //数组在动态变化！
+            }
+            for(var i=0;i<arr.length;i++)
+            {
+                var temp=arr[i];
+                if(value==temp[0])
+                {
+                    for(var j=1;j<temp.length;j++)
+                    {
+                        var op=document.createElement("option");
+                        var te=document.createTextNode(temp[j]);
+                        op.appendChild(te);
+                        s.appendChild(op);
+                    }
+                }
+            }
+        }
+    </script>
+  </head>
+  <body>
+      <select onchange="choose(this.value)">
+          <option>---请选择---</option>
+          <option value="骑士">骑士</option>
+          <option value="勇士">勇士</option>
+          <option value="马刺">马刺</option>
+      </select>
+      <select id="s1"></select>
+  </body>
+</html>

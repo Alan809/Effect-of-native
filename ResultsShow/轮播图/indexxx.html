@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+		//匹配邮箱 网址 手机号11位
+		//var reg=/^1[3-8][0-9]{9}$/; 手机号
+		//var tel=13001056661;
+		//console.log(reg.test(tel));
+
+		/*//.edaskds.com/cn/net //匹配网址
+		var reg=/^(www\.)?\w+\.(com|cn|net|com\.cn)$/;
+		var email="www.qeqwerwejrwej.com";
+		console.log(reg.test(email));*/
+
+/*	var str="XXXXX@XXXXX.com" 匹配邮箱
+	var reg=/^\w+@\w+\.(com|cn|net)$/;
+	console.log(reg.test(str));*/
+
+/*	function getday(n){
+			var now=new Date();//获取当前时间
+			var time=now.getTime();//获取当前时间的时间戳
+			var ftime=time+24*60*60*1000*n;
+			now.setTime(ftime);
+			return now.getDay();
+		}
+		console.log(getday(2));
+*/
+
+ 	
+/* var str="1 plus 2 equal 33"; 
+console.log(str.match(/\d+/));
+console.log(str.match(/\d+/g))
+null  [1]  [1,2]  [1,2,33]*/
+
+/*function indexOfArray(val,arr){
+ for(var i=0;i<arr.length;i++){
+       if(val === arr[i]){
+          return i;
+       }else{
+          return -1;
+       }  
+ }
+}
+console.log(indexOfArray(10,[]));
+0 -1 undefined null*/
+
+
+/*var str="index.html";
+    var name=str.substr(str.indexOf(".")+1);
+    console.log(name);打印结果是？
+    .html html .htm 以上都不对*/
+
+/*function diff(iNum1, iNum2) {
+  if (iNum1 > iNum2) {
+    return iNum1 - iNum2;
+  } else {
+    return iNum2 - iNum1;
+  }
+}console.log(diff(-5,8));*/
+/*-13 13 3 NaN*/
+
+/*var test = function fn(){
+    return;
+    alert(666);
+};
+console.log(test());
+
+弹出666  程序报错 null undefined*/
+
+//var today = new Date(2018,3,35);console.log(today.getDate())
+//35  2 4 5
+
+/*var arr = [1,2,3];
+console.log(arr[5]);
+5  4 undefined 报错*/
+
+		/*var myname = 'window'; //声明全局变量
+        function test() {
+            alert(myname);
+            var myname = 'test';
+            alert(myname);
+        }
+        test();*/
+
+/*undefined window    window test    undefined test      test undefined
+*/ 
+
+/*点击页面上的任意位置，调用一个showMsg的函数，正确的实现方式是document.body.__________________。
+A onclick = showMsg()
+B onclick = showMsg;
+C onclick = function(){showMsg;} 
+D 以上都不对*/
+/*<div id="count">1</div>;var num = 99,count = document.getElementById("count").innerHTML;document.body.innerHTML = num-count;页面上的显示结果是?
+
+991  98 NaN 以上都不对
+
+将页面的背景色设为绿色，以下代码正确的是
+document.getElementById("body")[0].style.background = "#0f0";
+document.getElementsByTagName("body")[0].style.background = "#0f0";
+document.body.background = "#0f0";
+document.body.style.background-color = "#0f0";
+
+（专辑js）var fileName="abc.txt",以下()语句用于获得文件名的扩展名.txt？
+fileName.substr(3,-1)
+
+fileName.substring(fileName.lastIndexOf("."),0)
+以上写法都不正确*/
+/*
+var arr = [];console.log(typeof arr);
+null Array object []*/
+
+/*如果按下的按键是回车键，正确的实现方式是（   ）
+ if(event.keyCode==39)   
+ 	if(event.keyCode==38)
+if(event.keyCode==32)
+	if(event.keyCode==13)
+
+浏览器窗口尺寸发生变化时触发的事件是（   ）：
+onscroll onload onclick onresize
+
+页面加载触发的事件是（    ）：
+onresize onscroll onload onclick
+
+ 
+如何设置一个DOM对象style属性的背景颜色？
+style.background‐color
+ style.BackgroundColor
+ style.backgroundColor
+ style.backgroundcolor
+
+
+ 以下说法正确的是
+ {2,} 至少匹配2次
+ {2,} 至多匹配2次
+ {2,} 匹配2和逗号
+ 以上都不对
+
+ 以下是匹配手机号码正确的是
+ /^1[345678][0-9]9$/
+ /^1[345678][0-9]{9}$/
+ /^1[345678][0-9]{9}/
+ 以上都不对*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	</script>
+</body>
+</html>

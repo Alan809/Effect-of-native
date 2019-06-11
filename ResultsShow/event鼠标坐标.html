@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+	*{margin: 0;padding: 0;}
+	#box{height: 200px;width: 1000px;background: #886688;font-size: 40px;}
+	</style>
+</head>
+<body>
+	<div id="box">
+	</div>
+	<script>
+		var tet1 = document.getElementById("tet1")
+		,	tet2 = document.getElementById("tet2")
+		,	box = document.getElementById("box");
+		box.onmousemove = function(e){
+			var e = window.event||e;
+			box.innerHTML = "X坐标" + e.clientX + " Y坐标" +e.clientY;
+		}
+	</script>
+</body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<ul>
+		<!-- <li><input type="text" placeholder="请输入医院"><span>X</span></li> -->
+	</ul>
+	<button>单击添加医院</button>
+	<script>
+		var  oBtn=document.getElementsByTagName('button'),
+			 oUls=document.getElementsByTagName('ul'),
+			 lis=oUls[0].getElementsByTagName('li');
+			 console.log(lis.length)
+
+			 oBtn[0].onclick=function(){
+
+				if(lis.length<5){
+						var newLi=document.createElement('li');
+				 		var newInput=document.createElement('input');
+				 			newInput.placeholder="请输入医院";
+				 			newLi.appendChild(newInput);
+				 		var newSpan=document.createElement('span');
+				 			newSpan.innerHTML="X";
+				 			newLi.appendChild(newSpan);
+				 			oUls[0].appendChild(newLi);
+
+				 			newSpan.onclick=function(){
+				 				oUls[0].removeChild(newLi);
+				 				oBtn[0].style.display='block';
+
+				 			}
+ 				
+				}else{
+					 oBtn[0].style.display='none'
+				}			 
+			 		
+			 }
+
+
+
+	</script>
+</body>
+</html>

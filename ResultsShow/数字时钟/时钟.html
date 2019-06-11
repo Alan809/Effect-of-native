@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		*{margin:0;padding:0;}
+		#box{width: 500px;height: 300px;background: black;margin:20px auto;line-height: 300px;text-align: center;}
+		span{color: #fff;font-size: 30px;}
+		#box img{vertical-align: middle;}
+	</style>
+	
+</head>
+<body onload = "getTimes()">
+	<div id="box">
+		<img src="" alt="">
+		<img src="" alt="">
+		<span>:</span>
+		<img src="" alt="">
+		<img src="" alt="">
+		<span>:</span>
+		<img src="" alt="">
+		<img src="" alt="">
+	</div>
+	<script>
+		var imgs = document.getElementsByTagName("img");
+		function getTimes(){
+			var time = new Date();
+			var str = "";
+			var hours = time.getHours(),
+				minutes = time.getMinutes(),
+				seconds = time.getSeconds();
+			str = "" + addZero(hours) + addZero(minutes) + addZero(seconds);
+			console.log(str);//"103454"
+			for(var i=0;i<imgs.length;i++){ //0 -- 5   1  
+				imgs[i].src = "img/"+ str[i] + ".png";//img/1.png    img/0.png
+			}
+		}
+		function addZero(i){
+			if(i<10){
+				return "0"+i;
+			}
+			return i;
+		}
+		setInterval(getTimes,1000);
+	</script>
+</body>
+</html>

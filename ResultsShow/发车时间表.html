@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="zh-cn">
+<head>
+	<meta charset="UTF-8">
+	<title>火车运行时刻</title>
+</head>
+<body>
+	<script>
+		var num = 17.5
+		, 	str = ""
+		, 	total = num*12
+		, 	hour = 5
+		,	second = 30;
+		for(var i=0;i<=total;i++){
+			var seconds = second+i*5;
+			if(seconds>=60){
+				second = 0;
+				seconds = "00";
+				total = total - i;
+				i = 0;
+				hour++;
+			}
+			if(seconds == 5){
+				seconds = "05";
+			}
+			str += hour+":"+seconds+" 发车<br>";
+		}
+		document.write(str);
+		
+		
+	</script>
+</body>
+</html>

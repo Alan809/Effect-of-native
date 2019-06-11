@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>奇偶分排</title>
+</head>
+<body>
+	<div id ="jos">
+		<p></p>
+		<p></p>
+	</div>
+	<script>
+		var arrl = document.getElementById("jos").getElementsByTagName("p");
+		function fn(min,max){
+			var arrj = [];
+			var arro = [];
+			for(var i=min;i<=max;i++){
+				if(i%2 == 0){
+					arro.push(i);
+				}else{
+					arrj.push(i);
+				}
+			}		
+				arrl[0].innerHTML = arrj;
+				arrl[1].innerHTML = arro;			
+		}
+		fn(1,100);
+	</script>
+</body>
+</html>

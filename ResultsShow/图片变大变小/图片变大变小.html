@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script>
+       function bian(){
+       	 var obj = document.getElementById("tid");
+         var w = obj.width;
+         w+=10;
+         obj.width=w;//给img对象宽度从新赋值
+         if(obj.width>200){
+         	obj.width=100; //如果超出200，将图片的宽度变成100
+         }
+       }
+	</script>
+</head>
+<body>
+	<!-- 例如1：最初图片的宽度设置为100像素，每次单击图片的时候，让图片的宽度每次加10像素 -->
+	<img src="images/f1.jpg" width="100" id="tid" onclick="bian()">
+</body>
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		select{
+			width: 120px;
+			height: 30px;
+			text-align: center;
+			font-size: 18px;
+			margin-right: 10px;
+		}
+	</style>
+</head>
+<body>
+	<div id="div"></div>
+	<script src="check.js"></script>
+	<script>
+		var div = document.getElementById('div');
+
+		var sheng = document.createElement('select');
+		var shi = document.createElement('select');
+		var qu = document.createElement('select');
+
+		div.appendChild(sheng);
+		div.appendChild(shi);
+		div.appendChild(qu);
+
+		var first = "<option value = '-1'>请选择</option>";
+		for(var i=0;i<city.length;i++){
+			first += "<option value="+i+">"+city[i].name+"</option>";
+		}
+		sheng.innerHTML = first;
+
+		sheng.onchange = function(){
+			shi.innerHTML = "<option value = '-1'>请选择</option>";
+			qu.innerHTML = "<option value = '-1'>请选择</option>";
+			var two = "<option value = '-1'>请选择</option>";
+			var selshi = city[this.selectedIndex-1].city;
+			for(var j=0;j<selshi.length;j++){
+				two += "<option value="+j+">"+selshi[j].name+"</option>";
+			}
+			shi.innerHTML = two;
+		}
+
+		shi.onchange = function(){
+			qu.innerHTML = "<option value = '-1'>请选择</option>";
+			var three = "<option value = '-1'>请选择</option>";
+			var selqu = city[sheng.selectedIndex-1].city[this.selectedIndex-1].area;
+			for(var k=0;k<selqu.length;k++){
+				three += "<option value="+k+">"+selqu[k]+"</option>";
+			}
+			qu.innerHTML = three;
+		}
+	</script>
+</body>
+</html>

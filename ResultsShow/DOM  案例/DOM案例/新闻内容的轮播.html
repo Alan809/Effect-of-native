@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+	#box{width: 120px;height: 20px;background: red;}
+	li{list-style: none;}
+	</style>
+</head>
+<body>
+	<div id="box">
+		<ul id="ulId">
+			<li>0001</li>
+			<li>0002</li>
+			<li>0003</li>
+			<li>0004</li>
+			<li>0005</li>
+			<li>0006</li>
+		</ul>
+	</div>
+	<script>
+	// appendChild 追加已有的节点,换了位置（原有的位置消失）
+		var ulId = document.getElementById("ulId");
+		function newsLb(){
+			ulId.appendChild(ulId.firstElementChild);
+		}
+		setInterval( newsLb,2000 );
+
+		
+
+
+		
+
+
+	</script>
+
+
+</body>
+</html>

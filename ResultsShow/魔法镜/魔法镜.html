@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>魔法镜</title>
+	<style>
+	#mg img{ display: none; }
+	#mg>img:nth-child(1){ display: block; }
+	</style>
+</head>
+<body>
+	<div id="mf">
+		<img src="img/m1.png" alt="">
+		<img src="img/m2.png" alt="">
+		<img src="img/m3.png" alt=""><br/>
+		<img src="img/m4.png" alt="">
+		<img src="img/m5.png" alt="">
+		<img src="img/m6.png" alt="">
+	</div>
+	<div id="mg">
+		<img src="img/m1.jpg" alt="">
+		<img src="img/m2.jpg" alt="">
+		<img src="img/m3.jpg" alt="">
+		<img src="img/m4.jpg" alt="">
+		<img src="img/m5.jpg" alt="">
+		<img src="img/m6.jpg" alt="">
+	</div>
+	<script>
+		var pngs = document.getElementById("mf").getElementsByTagName("img")
+		,	img = document.getElementById("mg")
+		,	imgs = img.getElementsByTagName("img");
+		for(var i=0;i<pngs.length;i++){
+			pngs[i].index = i;
+			pngs[i].onmouseover = function(){
+				for(var j = 0;j<imgs.length;j++){
+					imgs[j].style.display = "none";
+				}
+				imgs[this.index].style.display = "block";
+			}
+		}
+	</script>
+</body>
+</html>

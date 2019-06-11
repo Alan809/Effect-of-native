@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<select name="" id="province">
+		<option value="0">北京</option>
+		<option value="1">河北</option>
+		<option value="2">黑龙江</option>
+	</select>
+	<select name="" id="city">
+		
+	</select>
+	<script>
+		//二维数组保存省级市
+		var arrCity = [["大兴区","朝阳区","海淀区","昌平区"],["邯郸市","石家庄","衡水市","廊坊市"],["哈尔滨市","齐齐哈尔","大庆市"]];
+		var province = document.getElementById("province"),
+			city = document.getElementById("city");
+
+		//给city一个默认的
+		var strCity = "";
+		for(var i=0;i<arrCity[0].length;i++){
+			strCity += "<option value=' " + i +"'>" + arrCity[0][i] + "</option>";
+		}
+		city.innerHTML = strCity;
+
+		//改变事件  province.value
+		province.onchange = function(){
+			var str = "";
+			for(var i=0;i<arrCity[this.value].length;i++){
+				str += "<option value=' " + i +"'>" + arrCity[this.value][i] + "</option>"
+			}
+			city.innerHTML = str;
+		}
+	</script>
+</body>
+</html>

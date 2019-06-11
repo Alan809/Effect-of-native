@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	
+	<style>
+	*{
+		margin:0;
+		padding:0;
+	}
+	#divid{
+		width:410px;
+		height:500px;
+		border:1px solid blue;
+
+	}
+	#divid ul{
+		list-style:none;
+		height:50px;
+		/*border:1px solid blue;*/
+	}
+	#divid ul li{
+		float:left;
+		width:100px;
+		height:40px;
+		border:1px solid blue;
+		text-align:center;
+		line-height:40px;
+	}
+	#div1,#div2,#div3,#div4{
+		display:none; /*隐藏div*/
+	}
+	#div1{
+		color:red;
+		display:block;
+	}
+	#div2{
+		color:blue;
+	}
+	#div3{
+		color:green;
+	}
+
+	</style>
+
+	<script>
+	  function show(n){
+	  	//隐藏所有的内容
+	  	for(var i=1;i<=4;i++){
+	  	 var obj=document.getElementById("div"+i);
+	  	 obj.style.display="none";
+
+	  	}
+	  	//显示某一个内容
+	  	var obj=document.getElementById("div"+n); 
+	  	 obj.style.display="block";
+	  }
+
+	</script>
+</head>
+<body>
+ <div id="divid" >
+	    <ul>
+	       <li onmouseover="show(1)">体育新闻</li>
+	       <li onmouseover="show(2)">娱乐新闻</li>
+	       <li onmouseover="show(3)">宝宝新闻</li>
+	       <li onmouseover="show(4)">军事新闻</li>
+	    </ul>
+	    <div id="div1">
+	      　稍晚些时候，马蓉再次发布微博，称：“欲盖弥彰，善恶自有真相，不是不爆，时候未到。”回应王宝强的离婚声明。
+	    </div>
+	    <div id="div2">
+	    搜狐娱乐讯 今日（8月14日）凌晨，王宝强微博发声明表示因妻子马蓉出轨经纪人宋喆，遂解除二人夫妻关系。随后，马蓉发朋友圈指责丈夫“为了利益可以舍弃家人朋友孩子战友，有的话不是不说时候未到”，似乎暗指两人离婚另有隐情。
+	    </div>
+	    <div id="div3">
+	    　第一金牌日的射击赛场，41岁的越南老将黄春荣在全场观众齐声为本土选手阿尔梅达呐喊助威的嘈杂环境中，上演了经典大逆转，在最后一枪落后对手0.2环，且最后一次击发对手率先打出10.1环的不错成绩后，黄春荣以一发近乎完美的10.7环锁定了男子10米气手枪的金牌，这也是越南奥运史上的第一金
+	    </div>
+	    <div id="div4">
+	    第二天，科索沃的国旗就在里约的卡里奥卡体育馆升起，凯尔门迪在柔道女子52公斤级比赛中夺冠，这是科索沃第一次以独立国际奥委会成员国的身份参赛，虽然他们在2008年宣布从塞尔维亚独立后，并不被联合国以及193个成员国的84个国家所承认。凯尔门迪的金牌是奥委会主席巴赫亲自颁发的，因为这是两人的一个约定。
+	    </div>
+ </div>	
+</body>
+</html>

@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>自动弹出字</title>
+	<style>
+	#box{font-size: 50px;}
+	</style>
+</head>
+<body>
+	<div id="box">
+	</div>
+	<script>
+		var count = 0;
+		function fn(){
+			var str = "车站人流较多，请注意安全！";
+			var newStr = str.substr(0,count);
+			document.getElementById("box").innerHTML = newStr;
+			count++;
+			if(count > str.length){
+				count = 0;
+			}
+		}
+		// fn();
+		setInterval(fn,500);
+	</script>
+</body>
+</html>

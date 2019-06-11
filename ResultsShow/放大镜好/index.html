@@ -1,0 +1,250 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<style>
+	*{
+		margin: 0;
+		padding: 0;
+	}
+
+	.wrap{
+		margin: 0 auto;
+		width: 900px;
+		height: 600px;
+		position: relative;
+		border: 1px solid #ccc;
+	}
+
+	#zuo{
+		border: 1px solid #000;
+		width: 400px;
+		height: 400px;
+		float: left;
+		margin: 0 30px;
+		position: relative;
+	}
+
+	#zuo img{
+		width: 400px;
+		height: 400px;
+	}
+
+	#you{
+		border: 1px solid #000;
+		width: 400px;
+		height: 400px;
+		float: left;
+		overflow: hidden;
+		position: relative;
+	}
+	#you img{
+		width: 800px;
+		height: 800px;
+		display: none;
+		position: absolute;
+		top: 0;
+		left: 0;
+	}
+
+	#xiao{
+		width: 1000px;
+		height: 200px;
+		position: absolute;
+		bottom: -20px;
+		left: 50px;
+	}
+	
+	#xiao img{
+		width: 150px;
+		height: 150px;
+		opacity: .5;
+	}
+
+	b{
+		width: 200px;
+		height: 200px;
+		background: blue;
+		opacity: .5;
+		position: absolute;
+		z-index: 2;
+		top: 0;
+		left: 0;
+		display: none;
+	}
+
+</style>
+
+<body>
+	<div class="wrap">
+		<div id="da">
+			<div id="zuo">
+				<b></b>
+				<img src="img/1.jpg" alt="">
+			</div>
+			<div id="you">
+				<img src="img/1.jpg" alt="">
+			</div>
+		</div>
+		<div id="xiao">
+			<img src="img/1.jpg" alt="" style='opacity:1'>
+			<img src="img/2.jpg" alt="">
+			<img src="img/3.jpg" alt="">
+			<img src="img/4.jpg" alt="">
+			<img src="img/5.jpg" alt="">
+		</div>
+	</div>
+
+	<script>
+	'use strict'
+	// 原生
+/*		var zuo = document.getElementById('zuo') 	// 获取左盒子
+		var you = document.getElementById('you')	// 获取右盒子
+		var b = document.getElementsByTagName('b')[0]	// 获取移动的蓝色阴影
+		var img = document.querySelectorAll('#xiao>img')	// 获取小盒子中的图片
+		var img1 = zuo.getElementsByTagName('img')[0];		// 获取左盒子中的图片
+		var img2 = you.getElementsByTagName('img')[0];		// 获取右盒子中的图片
+
+		for(let i=0;i<img.length;i++){	// 遍历最底下的小图片
+			img[i].onclick=function(){	// 当点击最底下的小图片时
+				for(var j=0;j<img.length;j++){	// 重新遍历最底下的小图片
+					img[j].style.opacity='.5';	// 还原图片原始的透明度
+					img1.src='';			// 清空左盒子中的图片
+					img2.src='';			// 清空右盒子中的图片
+					img2.style.display='none'	// 还原右盒子中的图片的隐藏模式
+					b.style.left=0;		// 将阴影盒子的左边距还原为0
+					b.style.top=0;		// 将阴影盒子的上边距还原为0
+				}
+				img1.src='img/'+(i+1)+'.jpg';	// 改变左盒子中的图片
+				img2.src='img/'+(i+1)+'.jpg';	// 改变右盒子中的图片
+				this.style.opacity='1';		// 将点击的本盒子的透明度设置为1
+				img2.style.display='block'	// 将右盒子中的图片显示
+				b.style.display='block';	// 让阴影盒子显示
+			}
+		}
+
+		// b.onmousedown=function(){	//  当按下阴影盒子时
+
+			zuo.onmousemove=function(ev){	// 当在左盒子中移动时
+				var xleft = zuo.offsetLeft;	// 获取左盒子的左边距
+				var xtop = zuo.offsetTop;	// 获取左盒子的上边距
+				var Event = ev ||  event;	
+				var cx = Event.clientX;		// 获取可视区的横坐标
+				var cy = Event.clientY;		// 获取可视区的纵坐标
+
+				var jx = cx - xleft - 200 - 200;	// 定义阴影盒子的横坐标
+				var jy = cy - xtop - 100 ;			// 定义阴影盒子的纵坐标
+
+				var hk = zuo.clientWidth - 200;		// 定义阴影盒子横轴的最大范围
+				var hj = zuo.clientHight - 200;	// 定义阴影盒子纵轴的最大范围
+
+				if(jx<=0){	// 判断阴影盒子横轴移动的范围在左盒子之中
+					jx=0;
+				}else if(jx>hk){
+					jx=hk;
+				}
+
+				if(jy<=0){	// 判断阴影盒子纵轴移动的范围在左盒子之中
+					jy=0;
+				}else if(jy>hj){
+					jy=hj;
+				}
+
+				b.style.left = jx + 'px';	// 设置阴影盒子的左边距（加单位）
+				b.style.top = jy + 'px';	// 设置阴影盒子的上边距（加单位）
+
+				img2.style.left = - 2 * jx + 'px';	// 设置右盒子中的图片的横坐标
+				img2.style.top = - 2 * jy + 'px';	// 设置右盒子中的图片的纵坐标
+
+
+			}
+
+			// b.onmouseup=function(){	// 当鼠标在阴影盒子中弹起时
+			// 	zuo.onmousemove=''		// 去除左盒子当中的鼠标移动函数
+			// }
+		// }
+*/
+	// 封装后的
+		function feng(zuo,you,b,xiao,img,img1,img2){
+
+			this.zuo = document.getElementById(zuo) 	// 获取左盒子
+			this.you = document.getElementById(you)	// 获取右盒子
+			this.b = document.getElementsByTagName(b)[0]	// 获取移动的蓝色阴影
+			this.xiao = document.getElementById(xiao) 	// 获取小盒子
+			this.img = this.xiao.getElementsByTagName(img)	// 获取小盒子中的图片
+			this.img1 = this.zuo.getElementsByTagName(img1)[0];		// 获取左盒子中的图片
+			this.img2 = this.you.getElementsByTagName(img2)[0];		// 获取右盒子中的图片
+			
+		}
+
+		feng.prototype.dian = function(){
+			var that = this;
+			for(let i=0;i<this.img.length;i++){	// 遍历最底下的小图片
+				this.img[i].onclick=function(){	// 当点击最底下的小图片时
+					for(var j=0;j<that.img.length;j++){	// 重新遍历最底下的小图片
+						that.img[j].style.opacity='.5';	// 还原图片原始的透明度
+						that.img1.src='';			// 清空左盒子中的图片
+						that.img2.src='';			// 清空右盒子中的图片
+						that.img2.style.display='none'	// 还原右盒子中的图片的隐藏模式
+						that.b.style.left=0;		// 将阴影盒子的左边距还原为0
+						that.b.style.top=0;		// 将阴影盒子的上边距还原为0
+					}
+					that.img1.src='img/'+(i+1)+'.jpg';	// 改变左盒子中的图片
+					that.img2.src='img/'+(i+1)+'.jpg';	// 改变右盒子中的图片
+					that.img[i].style.opacity='1';		// 将点击的本盒子的透明度设置为1
+					that.img2.style.display='block'	// 将右盒子中的图片显示
+					that.b.style.display='block';	// 让阴影盒子显示
+				}
+			}
+
+			// that.b.onmousedown=function(){	//  当按下阴影盒子时
+
+				that.zuo.onmousemove=function(ev){	// 当在左盒子中移动时
+					that.xleft = that.zuo.offsetLeft;	// 获取左盒子的左边距
+					that.xtop = that.zuo.offsetTop;	// 获取左盒子的上边距
+					that.Event = ev ||  event;	
+					that.cx = that.Event.clientX;		// 获取可视区的横坐标
+					that.cy = that.Event.clientY;		// 获取可视区的纵坐标
+
+					that.jx = that.cx - that.xleft - 200 - 200;	// 定义阴影盒子的横坐标
+					that.jy = that.cy - that.xtop - 100 ;			// 定义阴影盒子的纵坐标
+
+					that.hk = that.zuo.clientWidth - 200;		// 定义阴影盒子横轴的最大范围
+					that.hj = that.zuo.clientHeight - 200;	// 定义阴影盒子纵轴的最大范围
+
+					if(that.jx<=0){	// 判断阴影盒子横轴移动的范围在左盒子之中
+						that.jx=0;
+					}else if(that.jx>that.hk){
+						that.jx=that.hk;
+					}
+
+					if(that.jy<=0){	// 判断阴影盒子纵轴移动的范围在左盒子之中
+						that.jy=0;
+					}else if(that.jy>that.hj){
+						that.jy=that.hj;
+					}
+
+					that.b.style.left = that.jx + 'px';	// 设置阴影盒子的左边距（加单位）
+					that.b.style.top = that.jy + 'px';	// 设置阴影盒子的上边距（加单位）
+
+					that.img2.style.left = - 2 * that.jx + 'px';	// 设置右盒子中的图片的横坐标
+					that.img2.style.top = - 2 * that.jy + 'px';	// 设置右盒子中的图片的纵坐标
+
+
+				}
+
+				// that.b.onmouseup=function(){	// 当鼠标在阴影盒子中弹起时
+				// 	that.zuo.onmousemove=''		// 去除左盒子当中的鼠标移动函数
+				// }
+			// }
+		}
+
+		var obj=new feng('zuo','you','b','xiao','img','img','img')
+		obj.dian()
+
+
+	</script>
+</body>
+</html>

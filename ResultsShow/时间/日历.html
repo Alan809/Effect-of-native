@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>日历</title>
+</head>
+<body>
+	<div id="box">
+		<table id="tab" border="1" align="center" width="210" height="210" cellspacing="1">
+			<caption id="cap"></caption>
+			<thead id="tHead" bgcolor="aqua" align="center">
+			<tr height="30" >
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+			</tr>
+			</thead>
+			<tbody id="tBody" align="center">
+			<tr>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+			</tr>
+			
+	</tbody>
+	</table>
+	</div>
+	
+	<script>
+		var tHead = document.getElementById("tHead")
+		,	tHtds = tHead.getElementsByTagName("td")
+		,	tBody = document.getElementById("tBody")
+		,	tBtds = tBody.getElementsByTagName("td")
+		,	cap = document.getElementById("cap");
+		var arr = ["日","一","二","三","四","五","六"];
+		for(var i=0;i<tHtds.length;i++){
+			tHtds[i].innerText = arr[i];
+		}
+		function fn(x,y){
+			var dayNow = new Date().getDate();
+			var date = new Date(x,y,1);
+			var day = date.getDay();
+			var dates = new Date(x,y+1,0);
+			var days = dates.getDate();
+			var dates1 = new Date(x,y,0);
+			var days1 = dates1.getDate();
+			cap.innerText = x + "年" + (y+1) + "月日历";
+			var j=1;
+			for(var i=day-1;i>=0;i--){
+					tBtds[i].innerText =days1;
+					days1--;
+					tBtds[i].style.color = "#868686";
+			}
+			for(var i=0;i<tBtds.length;i++){
+				if(i == dayNow){
+					tBtds[i+day-1].style.backgroundColor="aqua";
+				}
+				if(i<days){
+					tBtds[i+day].innerText = i+1;
+				}else{
+					tBtds[i+day].innerText = j;
+					j++;
+					tBtds[i+day].style.color = "#868686";
+				}
+			}
+		}
+		fn(2017,0);
+	</script>
+</body>
+</html>

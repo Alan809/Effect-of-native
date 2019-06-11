@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8"> 
+<title>点名器</title> 
+<style>
+	#card {
+		margin:0 auto; 
+		width: 250px;
+		height: 300px;
+		text-align: center;
+	}
+	
+	#header {
+	    background-color: #4CAF50;
+	    color: white;
+	    width: 250px;
+	    height: 60px;
+	    padding: 10px;
+	    font-size: 40px;
+	}
+	
+	#container {
+	    padding: 10px;
+	}
+</style>
+</head>
+<body>	
+	<div id="card">
+		<h1>点名器</h1>
+		<div id="header">
+	    	<p></p>
+		</div>
+		<div id="container">
+	    	<button id="btn1">开始</button>
+			<button id="btn2">停止</button>
+		</div>	
+	</div>
+	<script>
+		var box = document.getElementById("header")
+		,	btn1 = document.getElementById("btn1")
+		,	btn2 = document.getElementById("btn2");
+		var arr = ["羊肉串","狗肉串","猪肉串","人肉串","牛肉串","肉串"];
+		function fn(){
+				var index = Math.floor(Math.random()*(arr.length));
+				box.innerHTML = arr[index];
+		}
+		var id = null;
+		btn1.onclick=function(){
+			btn1.disabled=true;
+			btn2.disabled=false;
+			id = setInterval('fn()',50);
+			
+		}
+		btn2.onclick=function(){
+			btn1.disabled=false;
+			btn2.disabled=true;
+			clearInterval(id);
+		}
+	</script>
+</body>
+</html>

@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel="stylesheet" type="text/css" href="css/index.css">
+</head>
+<body>
+    <div id="box" class=''>
+        <div class="wrap" id="wrap">
+	  	    <ul class="list" id="list">
+	  	    	  <li>1F<span>-副食百货</span></li>
+	  	    	  <li>2F<span>-至尊男鞋</span></li>
+	  	    	  <li>3F<span>-精美女装</span></li>
+	  	    	  <li>4F<span>-电动游戏</span></li>
+	  	    	  <li>5F<span>-优雅餐厅</span></li>
+	  	    	  <li>6F<span>-商务会谈</span></li>
+	  	    </ul>
+	  	    <div class="return" id="return">
+	  	    	∧
+	  	    </div>
+	    </div>
+
+	    <div class="floor" id="floor">
+			  <div class="f1" style="height:900px;">
+			  	 F1
+			  </div>
+			   <div class="f2" style="height:500px;">
+			  	F2
+			  </div>
+			   <div class="f3" style="height:700px;">
+			  	F3
+			  </div>
+			   <div class="f4" style="height:780px;">
+			  	 F4
+			  </div>
+			  <div class="f5" style="height:650px;">
+			  	 F5
+			  </div>
+			  <div class="f6" style="height:880px;">
+			  	F6
+			  </div>
+		  </div>
+	</div>
+
+	<script>
+		var wrap = document.getElementById('wrap');
+		var floor = document.getElementById('floor');
+		var dv = floor.getElementsByTagName('div');
+		var list = document.getElementById('list');
+		var lis = list.getElementsByTagName('li');
+		var arr = [];
+		for(var i=0;i<dv.length;i++){
+			arr.push(dv[i].offsetTop)
+		}
+		window.onscroll = function(){
+			var top = document.body.scrollTop || document.documentElement.scrollTop;
+			var clien = document.body.clientHeight || document.documentElement.clientHeight;
+			// 可视区域的高度 / 2 + 被卷去的头部
+			top = parseInt(clien/2) + top;
+			// 到哪一层就指向哪一层
+			for(var j=0;j<arr.length;j++){
+				if(top>=arr[j]){
+					// 排他
+					for(var n=0;n<lis.length;n++){
+						lis[n].style.marginLeft = 100 + 'px'
+					}
+					console.log(j);
+				lis[j].style.marginLeft = 0 + 'px'
+				}
+				
+			}
+
+			if(top>300){
+				wrap.style.display = 'block'
+			}else{
+				wrap.style.display = 'none'
+			}
+
+		}
+
+
+
+		 var wrap=document.getElementById("wrap");
+   var floor=document.getElementById("floor");
+   var divs=floor.getElementsByTagName("div");
+   var list=document.getElementById("list");
+   var lis=list.getElementsByTagName("li");
+   var arr=[];
+
+
+   for(var i=0;i<divs.length;i++){
+   	 arr.push(divs[i].offsetTop);
+   }
+  
+   window.onscroll=function(){
+   	// 卷去的头部
+   	  var top=document.documentElement.scrollTop || document.body.scrollTop;
+   	  // 可视区域的高度
+   	  var vieH=document.documentElement.clientHeight || document.body.clientHeight;
+   	  // 可视区域 / 2 + 卷去头部
+   	      top=parseInt(vieH/2)+top;
+   	  for(var i=0;i<arr.length;i++){
+   	  	if(top>=arr[i]){
+
+   	  	  for(var n=0;n<lis.length;n++){
+
+   	  	  	lis[n].style.marginLeft=100+"px";
+
+   	  	  }
+   	  	 
+   	  	  lis[i].style.marginLeft=0+"px";
+   	  	}
+   	  }
+
+   	  // 显示隐藏
+   	  if(top>=300){
+   	  	wrap.style.display="block";
+   	  }else{
+   	  	wrap.style.display="none";
+   	  }
+   }
+
+	</script>
+
+	
+</body>
+</html>

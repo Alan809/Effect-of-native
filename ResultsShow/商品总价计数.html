@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="zh-cn">
+<head>
+	<meta charset="UTF-8">
+	<title>总价计算</title>
+	<style>
+	#num{text-align: center;}
+	#total{color: red;font-weight: bolder;}
+	</style>
+</head>
+<body>
+	<input type="button" value="-" id="minus">
+	<input type="text" name="" value="1" id="num" placeholder="购买数量">
+	<input type="button" value="+" id="plus">
+	单价: <span id="price">10</span> 元
+	总价: <span id="total">10</span> 元
+
+	<script>
+		var minus = document.getElementById("minus")
+		,	num = document.getElementById("num")
+		,	plus = document.getElementById("plus")
+		,	price = document.getElementById("price")
+		,	total = document.getElementById("total");
+		// alert(typeof total.innerHTML);
+		// 获取单价
+		var priceVal = Number(price.innerHTML);
+		
+
+		// 减按钮操作
+		minus.onclick = function(){
+			// 获取单击后购买数量的当前值
+			var value = Number(num.value);
+			// 做减减运算
+			value--;
+			// 购买数量不能小于1
+			if(value<1){
+				value = 1;
+			}
+			// 单击做减减之后，把值给文本框
+			num.value = value;
+			// 计算总价
+			total.innerHTML = priceVal*value;
+		}
+
+		// 加按钮操作
+		plus.onclick = function(){
+			var value = Number(num.value);
+			value++;
+			if(value>10){
+				value = 10;
+			}
+			num.value = value;
+			total.innerHTML = priceVal*value;
+		}
+	</script>
+</body>
+</html>

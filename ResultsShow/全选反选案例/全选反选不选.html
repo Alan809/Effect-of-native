@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+	div{text-align:center;}
+	h2{color: #686868;}
+	hr{width:450px;}
+	</style>
+</head>
+<body>
+	<div>
+		<h1>问券调查</h1>
+		<h2>您的爱好</h2>		
+		<hr/>
+		<input type="checkbox" value="睡觉" id="ah1"><label for="ah1">睡觉</label>&nbsp;
+		<input type="checkbox" value="打游戏" id="ah2"><label for="ah2">打游戏</label>&nbsp;
+		<input type="checkbox" value="玩牌" id="ah3"><label for="ah3">玩牌</label>&nbsp;
+		<input type="checkbox" value="游泳" id="ah4"><label for="ah4">游泳</label>&nbsp;
+		<input type="checkbox" value="逛街" id="ah5"><label for="ah5">逛街</label>&nbsp;
+		<input type="checkbox" value="聊天" id="ah6"><label for="ah6">聊天</label>&nbsp;
+		<input type="checkbox" value="骑行" id="ah7"><label for="ah7">骑行</label>&nbsp;<br/><br/>
+		<button id="qx">全选</button>
+		<button id="fx">反选</button>
+		<button id="nox">不选</button><br/><br/>
+		<button id="tj">提交</button>
+	</div>
+	<script>
+		var qx = document.getElementById("qx")
+		,	fx = document.getElementById("fx")
+		,	nox = document.getElementById("nox")
+		,	tj = document.getElementById("tj")
+		,	ipts = document.getElementsByTagName("input");	
+		function checkbox(num){
+			for(var i=0;i<ipts.length;i++){
+				if(num == 1){
+					ipts[i].checked = true;
+				}else if(num == 2){
+					if(ipts[i].checked == true){
+						ipts[i].checked = false;
+					}else{
+						ipts[i].checked = true;
+					}
+				}else if(num == 3){
+					ipts[i].checked = false;
+				}	
+			}
+		}
+		function fun(){
+			var str = "提交成功,您的爱好有:\n";
+			var sum = 1;
+			for(var i=0;i<ipts.length;i++){
+				if(ipts[i].checked == true){
+					str += sum + "、" + ipts[i].value + '\n';
+					sum++;
+				}
+			}
+			var ts = confirm("确认提交？");
+			if(ts == true){
+				if(str == "提交成功,您的爱好有:\n"){
+					alert("您还未填写！");
+				}else{
+					alert(str);
+					document.write("感谢您的参与！");
+				}
+				
+			}
+			
+		}
+		qx.onclick = function(){checkbox(1)}
+		fx.onclick = function(){checkbox(2)}
+		nox.onclick = function(){checkbox(3)}
+		tj.onclick = function(){fun()}
+	</script>
+
+</body>
+</html>

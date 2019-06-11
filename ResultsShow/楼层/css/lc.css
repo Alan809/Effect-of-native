@@ -1,0 +1,93 @@
+*{
+	margin: 0;
+	padding: 0;
+}
+#container{
+	position: relative;
+	width: 100%;
+}
+li{
+	list-style: none;
+}
+.main{
+	position: fixed;
+	top:100px;
+}
+.main li{
+	width: 45px;
+	height: 45px;
+	background:Gray ;
+	margin-bottom: 2px;
+	color: #fff;
+	text-align: center;
+	cursor: pointer;
+	font-size: 17px;
+}
+.main li:nth-child(1){
+	background: red;
+	line-height: 45px;
+}
+.main li:nth-child(9)>img{
+	transform: rotate(90deg);
+	-ms-transform: rotate(90deg);		/* IE 9 */
+	-webkit-transform: rotate(90deg);	/* Safari and Chrome */
+	-o-transform: rotate(90deg);		/* Opera */
+	-moz-transform: rotate(90deg);		/* Firefox */
+}
+.top{
+	width: 100%;
+	height: 60px;
+	background: red;
+}
+.scroll_img{
+	position: relative;
+	width: 1000px;
+	height: 409px;
+	margin:40px auto;
+	background:#0f0;
+}
+.scroll{
+	position: relative;
+	width: 1000px;
+	height: 600px;
+	margin:10px auto;
+	background:#0f0;
+}
+span{
+	text-align: center;
+	color: #fff;
+	font-size: 80px;
+	line-height: 80px;
+	position: absolute;
+	left: 30%;
+	top: 20%;
+}
+.footer{
+	width: 100%;
+	height: 50px;
+	position: relative;
+	bottom: 0px;
+	background:red;
+	margin-top: 40px;
+}
+#scroll1{
+	background: purple;
+}
+#scroll2{
+	background: blue;
+}
+#scroll3{
+	background: green;
+}
+#scroll4{
+	background: yellow;
+}
+#scroll5{
+	background: red;
+}
+#scroll6{
+	background: orange;
+}
+#scroll7{
+	background: aqua;
+}

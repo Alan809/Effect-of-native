@@ -1,0 +1,9 @@
+*{ margin:0; padding:0;}
+li{ list-style: none}
+#box{ margin: 50px auto; width: 600px; height: 400px; position: relative }
+#box ul{width: 600px; height: 400px;}
+#box ul li{ float: left; width: 200px; height: 200px;}
+#box ul img{ width: 200px; height: 200px}
+.tu_1{ width: 600px; height: 400px;background-color: #000000;position:absolute; opacity: 0.6; left: 0; top: 0;}
+.big{ width: 250px; height: 250px; position: absolute; left: 175px; top: 70px;}
+.small_1{ position: absolute; width: 20px; height: 20px; left:425px;top: 55px; color: white }

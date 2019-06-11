@@ -1,0 +1,239 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>日历</title>
+	<link rel="stylesheet" href="">
+	<style>
+	*{margin: 0;padding: 0;}
+	#box{height: 500px;width: 340px;background: #868686;margin: auto;margin-top: 20px;padding: 25px;position: relative;}
+	#time{font-size: 42px;color: #ffffff;}
+	#time1{font-size: 16px;color:blue;padding: 4px;}
+	#time2{font-size: 20px;color:#ffffff;padding: 4px;padding-top: 20px;cursor: pointer;}
+	#btn{right:30px; position: absolute;top: 122px;cursor: pointer;}
+	img{width: 22px;height: 22px;margin: 8px;}
+	td{color: #ffffff;font-size: 18px;cursor: default;}
+	#set{font-size: 16px;color:blue;padding: 4px;cursor: pointer;}
+	</style>
+</head>
+<body>
+	<div id="box">
+		<div id="time"></div>
+		<div id="time1"></div>
+		<div id="time2" ></div>
+		<div id="btn">
+			<img src="l.png" alt=""><img src="r.png" alt="">
+		</div>
+		<div id="rili">
+			<table id="tab" align="center" width="340" height="340" cellspacing="1">
+				<caption id="cap"></caption>
+				<thead id="tHead" align="center">
+					<tr height="30">
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+					</tr>
+				</thead>
+				<tbody id="tBody" align="center">
+					<tr>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+					</tr>
+					<tr>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+					</tr>
+					<tr>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+					</tr>
+					<tr>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+					</tr>
+					<tr>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+					</tr>
+					<tr>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+					</tr>
+				</tbody>	
+			</table>
+		</div>
+		<div id="set">日期和时间设置</div>
+	</div>
+</body>
+<script>
+	(function(){
+		var oTime = document.getElementById("time")
+		,	oTime1 = document.getElementById("time1")
+		,	oTime2 = document.getElementById("time2")
+		,	oSet = document.getElementById("set")
+		,	arr = ["日","一","二","三","四","五","六"]
+		,	 tHead = document.getElementById("tHead")
+		,	tHtds = tHead.getElementsByTagName("td")
+		,	tBody = document.getElementById("tBody")
+		,	tBtds = tBody.getElementsByTagName("td")
+		,	oIpt = document.getElementById("btn").getElementsByTagName("img")
+		,	timer = null;
+		timer = setInterval(time,1000);
+		function time(){
+			var date = new Date()
+			,	oFullYear = date.getFullYear()
+			,	oMonth = date.getMonth()
+			,	oDate = date.getDate()
+			,	oDay = date.getDay()
+			,	oHours = date.getHours()
+			,	oMinutes = date.getMinutes()
+			,	oSeconds = date.getSeconds()
+			,	strTime = fn(oHours) + ":" + fn(oMinutes) + ":" + fn(oSeconds)
+			,	strTime1 = fn(oFullYear) + "年" + fn(oMonth+1) + "月" + oDate + "日,   " + "星期" + fn1(oDay);
+			oTime.innerHTML = strTime;
+			oTime1.innerHTML = strTime1;
+		}
+
+		//加0操作
+		function fn(tm){
+			return tm<10?"0"+tm:tm;
+		}
+		function fn1(tm){
+			return arr[tm];
+		}
+		//写入大写数字
+		for(var i=0;i<tHtds.length;i++){
+			tHtds[i].innerText = arr[i];
+		}
+
+		//鼠标移入移出
+		for(var i=0;i<tBtds.length;i++){
+			tBtds[i].index = i;
+			tBtds[i].onmouseover = function(){
+				console.log(this.index)
+			}
+			tBtds[i].onmouseout = function(){
+				console.log(this.index)
+			}
+		}
+
+		//点击设置日期
+		oSet.onclick = function(){
+			console.log(1);
+		}
+		//设置全局年月的变量
+		var date = new Date()
+		,	oFullYear = date.getFullYear()
+		,	oMonth = date.getMonth();
+
+		//减月
+		oIpt[0].onclick = function(){
+			oMonth--;
+			if(oMonth<0){
+				oMonth = 11;
+				oFullYear--;
+			}
+			oYearH(oFullYear,oMonth);
+		}
+		//加月
+		oIpt[1].onclick = function(){
+			oMonth++;
+			if(oMonth>11){
+				oMonth = 0;
+				oFullYear++;
+			}
+			oYearH(oFullYear,oMonth);
+		}
+		//调用fn3
+		function oYearH(oFullYear,oMonth){
+			var strTime2 = fn(oFullYear) + "年" + fn(oMonth+1) + "月";
+			oTime2.innerHTML = strTime2;
+			fn3(oFullYear,oMonth);
+		}
+		//默认年月
+		oYearH(oFullYear,oMonth);
+		//返回当前月份
+		oTime2.onclick = function(){
+			var date = new Date()
+			,	FullYear = date.getFullYear()
+			,	Month = date.getMonth();
+			oYearH(FullYear,Month);
+			oFullYear = FullYear;//重新赋值全局的年月
+			oMonth = Month;
+		}
+		//日历
+		function fn3(x,y){
+			var datY = new Date().getFullYear();
+			var datM = new Date().getMonth();
+			var dayNow = new Date().getDate();
+			var date = new Date(x,y,1);
+			var day = date.getDay();
+			var dates = new Date(x,y+1,0);
+			var days = dates.getDate();
+			var dates1 = new Date(x,y,0);
+			var oMo = dates1.getMonth();
+			var days1 = dates1.getDate();
+			var j=1;
+			for(var i=day-1;i>=0;i--){
+					tBtds[i].innerText =days1;
+					days1--;
+					tBtds[i].style.color = "#C0C0C0";
+			}
+			for(var i=0;i<tBtds.length-day;i++){
+				if(datY == x && datM == y){
+					if(i == dayNow){	
+						tBtds[i+day-1].style.backgroundColor="#1E90FF";
+					}
+				}else{
+					tBtds[i].style.backgroundColor="";
+				}
+				if(i<days){
+					tBtds[i+day].innerText = i+1;
+					tBtds[i+day].style.color = "#ffffff";
+				}else{
+					tBtds[i+day].innerText = j;
+					j++;
+					tBtds[i+day].style.color = "#C0C0C0";
+				}
+			}
+		}
+	})()
+	
+	
+
+</script>
+</html>

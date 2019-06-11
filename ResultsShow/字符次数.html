@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+		var str = "abcabcbbbbccc";
+		var sum = 0,arr = [];
+		for(var i=0;i<str.length;i++){
+			var count = str.split(str[i]).length-1;
+			if(count > sum){
+				arr = [],sum = count,num = arr.push( str[i] );
+			}
+			else if(count == sum){
+				if( arr.indexOf(str[i]) == -1 ) arr.push(str[i] );
+			}
+		}
+		console.log( arr + "出现了" + sum + "次" );
+		
+		
+
+	</script>
+</body>
+</html>

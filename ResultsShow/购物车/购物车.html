@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>购物车</title>
+	<style>
+	#tet{height: 15px;width: 40px;}
+	</style>
+</head>
+<body>
+	<form action="">
+		<label for="ad">AD运动衣350元</label>
+		<input type="checkbox" id="ad" value= 350 ><br/>
+		<label for="nick">NICK运动背包220元</label>
+		<input type="checkbox" id="nick" value= 220 ><br/>
+		<label for="qd">乔丹运动鞋480元</label>
+		<input type="checkbox" id="qd" value = 480><br/>
+		商品总计：<input type="text" id="tet" value=0>元
+	</form>
+	
+	<script>
+		var ad = document.getElementById("ad")
+		,nick = document.getElementById("nick")
+		,qd = document.getElementById("qd")
+		,tet = document.getElementById("tet");
+		var sum = tet.value;
+		ad.onclick=function(){
+			if(ad.checked){
+				sum = Number(sum) + 350;
+				tet.value = sum;
+			}else{
+				sum = Number(sum) - 350;
+				tet.value = sum;
+			}			
+		}
+		nick.onclick=function(){
+			if(nick.checked){
+				sum = Number(sum) + 220;
+				tet.value = sum;		
+			}else{
+				sum = Number(sum) - 220;
+				tet.value = sum;
+			}
+			
+		}
+
+		qd.onclick=function(){
+			if(qd.checked){
+				sum = Number(sum) + 480;
+				tet.value = sum;		
+			}else{
+				sum = Number(sum) - 480;
+				tet.value = sum;
+			}
+
+		}
+
+	</script>
+</body>
+</html>

@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>登陆</title>
+</head>
+<body>
+	<script>
+	function checkName(){
+		var name = document.getElementById("name").value;
+		var	span = document.getElementById("name_ts");
+		// span.style.display = "block";
+		var exp = /^\w{8,15}$/;
+		if(exp.test(name)){
+			span.style.color = "green";
+			span.innerHTML = "格式正确";
+			return true;
+		}else{
+			span.style.color = "red";
+			span.innerHTML = "格式错误";
+			return false;
+		}
+	}
+	function checkPwd(){
+		var pwd = document.getElementById("pwd").value;
+		var span = document.getElementById("pwd_ts");
+		// span.style.display = "block";
+		var exp = /^\d{6}$/;
+		if(exp.test(pwd)){
+			span.style.color = "green";
+			span.innerHTML = "格式正确";
+			return true;
+		}else{
+			span.style.color = "red";
+			span.innerHTML = "格式错误（请输入6位数字）";
+			return false;
+		}
+	}
+	function checkForm(){
+		return checkName() && checkPwd();
+	}
+	function fn(){
+		var	spans = document.getElementsByTagName("span");
+		for(var i=0;i<spans.length;i++){
+			spans[i].innerHTML = "";
+		}
+	}
+	</script>
+	<h1>登陆</h1>
+	<form action="" onsubmit="return checkForm()" onreset="fn()">
+		账号：<input type="text" id="name" onblur="checkName()">
+		<span id="name_ts"></span>
+		<br/><br/>
+		密码：<input type="password" id="pwd" onblur="checkPwd()">
+		<span id="pwd_ts"></span>
+		<br/><br/>
+		<input type="submit" value="登陆"> 
+		<input type="reset" value="重置"> 
+	</form>
+</body>
+</html>

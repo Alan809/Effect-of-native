@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>倒计时</title>
+</head>
+<body>
+	<button id="btn">倒计时开始</button>
+	<script>
+		var count = 10;
+		var id;
+		btn.onclick = function(){
+			btn.disabled =true;
+			id = setInterval(function(){
+				btn.innerHTML = count+"s结束";
+				count--;
+				if(count<0){
+					count = 10;
+					btn.disabled = false;
+					btn.innerHTML = "倒计时开始";
+					clearInterval(id);
+				}
+			},1000);
+		}
+	</script>
+</body>
+</html>

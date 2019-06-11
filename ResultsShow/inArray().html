@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+	//某个元素是否在数组里
+	function inArray(obj,ele){
+		var rt;
+		for(var i = 0;i<obj.length;i++){
+			if(obj[i] == ele){
+				rt = ele + "在此数组中";
+				return rt;
+			}else{
+				rt = ele + "不在此数组中";
+			}
+		}
+		return rt;
+	}
+	
+	document.write(inArray([1,2,3,4,5,6,7],7));
+</script>
+</body>
+</html>

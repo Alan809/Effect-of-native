@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>算法2</title>
+</head>
+<body>
+	<div id="box"></div>
+	<div id="box1"></div>
+	<script>
+		//封装一个函数：输出从2000(min)年（含）到3000年(max)（含）间的所有闰年到页面，要求每10个数就执行换行
+		//说明：闰年就是能被4整除且不能被100整除的年，或者能被400整除的年。
+		function fn(min,max){
+			var box = document.getElementById("box")
+			,	box1 = document.getElementById("box1");
+			var arr = [];
+			var str = "";
+			var count = 10;
+			for(var i=min;i<=max;i++){
+				if((i%4==0 && i%100!=0) || (i%400==0)){
+					arr.push(i);
+				}
+			}
+			for(var i=0;i<arr.length;i++){
+				if((i+1)%count == 0 ){
+					str += arr[i] + "<br/>";
+				}else{
+					str += arr[i] + ","
+				}
+			}
+			box.innerHTML = min + "年到" + max + "年的闰年一共有：" + arr.length + "个" + "<hr/>";
+			box1.innerHTML = str;
+
+		}
+		fn(2000,3000);
+	</script>
+</body>
+</html>
